@@ -29,8 +29,14 @@
 
  #navbar {
 
+    margin-top: -2vh; //covers small gap left by html element
     background-color: #4d111a;
     color: #fbeff1;
+    box-sizing: border-box;
+
+    width: 100vw;
+    height: 10vh;
+    top: 0;
 
     a {
        text-decoration: none;
