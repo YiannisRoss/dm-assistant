@@ -1,7 +1,8 @@
 <h1>Your maps </h1>
 
+<%= link_to "Create new map", new_map_path%>
 
 <% @maps.each do |map| %>
-<%  map.title %>
-<%  map.image %>
+    <%= link_to map.title, edit_map_path %>
+    <%  map.image %>
 <% end%>
