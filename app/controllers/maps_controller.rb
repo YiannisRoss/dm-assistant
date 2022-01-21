@@ -13,8 +13,17 @@ class MapsController < ApplicationController
     end
 
     def edit
+
         @map = Map.find(params[:id])
+
     end
+
+    def show
+
+        @map = Map.find(params[:id])
+        
+    end
+
     def create
         
         @map = Map.new(map_params)
