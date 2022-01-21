@@ -3,6 +3,6 @@
 <%= link_to "Create new map", new_map_path%>
 <br>
 <% @maps.each do |map| %>
-    <%= link_to map.title, edit_map_path(map) %> 
+    <%= link_to map.title, map_path(map) %> 
     <%  map.image %>
 <% end%>
