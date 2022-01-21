@@ -7,10 +7,14 @@ class MapsController < ApplicationController
     end
 
     def new
-        @map = Map.new()
+        @user = current_user
 
+        @map = Map.new()
     end
 
+    def edit
+        @map = Map.find(params[:id])
+    end
     def create
         
         @map = Map.new(map_params)
@@ -26,6 +30,13 @@ class MapsController < ApplicationController
           end
 
 
+    end
+
+
+    def map_params
+        
+        params.require(:map).permit(:title, :user_id, :image)
+        
     end
 
 end
