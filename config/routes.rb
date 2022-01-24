@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   root to: "users#welcome"
 
   resources :maps
+  resources :characters
+  
 end

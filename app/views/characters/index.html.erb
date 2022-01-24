@@ -1,0 +1,6 @@
+<h1>My Characters</h1>
+
+
+<% if @characters.empty? %>
+    <p>You don't have any characters yet.</p> <%= link_to 'Create a character', new_character_path %>
+<% end %>
