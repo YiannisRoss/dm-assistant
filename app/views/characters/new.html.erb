@@ -1,1 +1,25 @@
 <h1>Create a character</h1>
+
+<%= form_with model: @character do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :stats %><br>
+    <%= f.text_field :stats %>
+  </div>
+
+  <%= f.hidden_field :user_id, :value => @user.id%>
+
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

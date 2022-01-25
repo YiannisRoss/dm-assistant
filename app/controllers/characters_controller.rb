@@ -6,9 +6,11 @@ class CharactersController < ApplicationController
     end
 
     def index
+        @user = current_user
         @characters = current_user.characters
     end
     def create
+        @user = current_user
         @character = Character.new
         @character.stats = {
             :strength => 0,
