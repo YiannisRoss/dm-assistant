@@ -12,16 +12,9 @@ class CharactersController < ApplicationController
     end
     def create
         @user = current_user
-        @character = Character.new
-        @character.stats = {
-            :strength => 0,
-            :dexterity => 0,
-            :constitution => 0,
-            :intelligence => 0,
-            :wisdom => 0,
-            :charisma => 0
-            
-            }
+       
+        @character = Character.new(character_params)
+        
 
             respond_to do |format|
                 if @character.save
