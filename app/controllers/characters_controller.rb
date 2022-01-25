@@ -21,11 +21,24 @@ class CharactersController < ApplicationController
             :wisdom => 0,
             :charisma => 0
             
-            
-            
-            
-            
             }
-        @character.save
+
+            respond_to do |format|
+                if @character.save
+                  format.html { redirect_to characters_path, notice: "character was successfully saved." }
+                  format.json { render :show, status: :created, location: @character }
+                else
+                    format.html { redirect_to characters_path,  alert: "character failed, #{@character.errors.full_messages.first}" , status: :unprocessable_entity }
+                    format.json { render json: @character.errors, status: :unprocessable_entity }
+                end
+              end  
+
     end
+
+    def character_params
+        
+        params.require(:character).permit( :name, :user_id, :image, :stats )
+        
+    end
+
 end
