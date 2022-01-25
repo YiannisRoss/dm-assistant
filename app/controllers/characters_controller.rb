@@ -28,6 +28,9 @@ class CharactersController < ApplicationController
 
     end
 
+    def show
+        @character = Character.find(params[:id])
+    end
     def character_params
         
         params.require(:character).permit( :name, :user_id, :image, :stats )
