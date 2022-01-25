@@ -4,5 +4,5 @@
 <br>
 <% @maps.each do |map| %>
     <%= link_to map.title, map_path(map) %> 
-    <%  map.image %>
+    <a href=<%=map_path(map)%> > <img src="<%=(url_for(map.image))%>">   
 <% end%>
