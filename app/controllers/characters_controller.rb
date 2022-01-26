@@ -34,7 +34,6 @@ class CharactersController < ApplicationController
     def character_params
         
         params.require(:character).permit( :name, :user_id, :image, :stats )
-        
     end
 
 end
