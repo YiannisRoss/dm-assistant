@@ -2,10 +2,11 @@
 
 
 <% if @characters.empty? %>
-    <p>You don't have any characters yet.</p> <%= link_to 'Create a character', new_character_path %>
+    <p>You don't have any characters yet.</p> 
 <% else %>
     <% @characters.each do |character|%>
         <%= link_to character.name, character_path(character) %> 
     <a href=<%=character_path(character)%> > <img src="<%=(url_for(character.image))%>">   
     <% end %>
 <% end %>
+<%= link_to 'Create a character', new_character_path %>
