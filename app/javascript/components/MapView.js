@@ -18,7 +18,7 @@ class MapView extends React.Component {
     console.log("Welcome component loaded")
     return (
       <React.Fragment>
-        <h1>{this.props.title}</h1>
+        <h1 id="map-title">{this.props.title}</h1>
         <img src={this.props.mapImage}></img>
       </React.Fragment>
     );
