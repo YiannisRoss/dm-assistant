@@ -1,4 +1,11 @@
-<h1><%= @map.title %> </h1>
+<%= react_component("MapView", { 
+    title: @map.title,
+    mapImage: url_for(@map.image)
 
 
-    <img src="<%=(url_for(@map.image))%>" >
+    
+    
+    
+    
+    
+    }) %>
