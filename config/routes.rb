@@ -8,4 +8,5 @@ Rails.application.routes.draw do
 
   resources :maps
   resources :characters
+  resources :game_tracker, only: :index
 end
