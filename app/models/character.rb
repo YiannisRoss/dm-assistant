@@ -1,9 +1,8 @@
+# frozen_string_literal: true
+
 class Character < ApplicationRecord
+  serialize :stats
+  belongs_to :user
 
-
-    serialize :stats
-    belongs_to :user
-
-    has_one_attached :image
-
+  has_one_attached :image
 end
