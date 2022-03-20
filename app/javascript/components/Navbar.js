@@ -14,12 +14,18 @@ class Navbar extends React.Component {
         )
 
         const listMaps = this.props.maps.map((map) =>
-            <option key={map.id}> {map.title} </option>
+            <option key={map.id} onClick={function () {
+                createMapWindow(map)
+            }} > {map.title} </ option>
         )
 
         function createCharacterWindow(character) {
 
             console.log(`createCharacterWindow called on character ${character.name}`)
+        }
+        function createMapWindow(map) {
+
+            console.log(`createMapWindow called on map ${map.title}`)
         }
         return (
             <React.Fragment>
