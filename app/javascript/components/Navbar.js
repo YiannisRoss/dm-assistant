@@ -7,11 +7,11 @@ class Navbar extends React.Component {
 
         const listCharacters = this.props.characters.map((character) =>
 
-            <option> {character.name} </option>
+            <option key={character.id}> {character.name} </option>
         )
 
         const listMaps = this.props.maps.map((map) =>
-            <option> {map.title} </option>
+            <option key={map.id}> {map.title} </option>
         )
         return (
             <React.Fragment>
