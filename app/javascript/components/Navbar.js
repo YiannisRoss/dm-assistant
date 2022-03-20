@@ -6,19 +6,24 @@ class Navbar extends React.Component {
     render() {
 
         const listCharacters = this.props.characters.map((character) =>
-            <div>
-                <li>{character.name}</li>
-            </div>);
+
+            <option> {character.name} </option>
+        )
+
         const listMaps = this.props.maps.map((map) =>
-            <div>
-                <li>{map.name}</li>
-            </div>);
+            <option> {map.title} </option>
+        )
         return (
             <React.Fragment>
 
                 <h2>Navbar</h2>
-                {listCharacters}
-                {listMaps}
+                <select>
+                    {listCharacters}
+                </select>
+
+                <select>
+                    {listMaps}
+                </select>
 
             </React.Fragment>
         );
