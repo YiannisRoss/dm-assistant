@@ -6,7 +6,7 @@
 <% else %>
     <% @characters.each do |character|%>
         <%= link_to character.name, character_path(character) %> 
-    <a href=<%=character_path(character)%> > <img src="<%=(url_for(character.image))%>">   
+    <a href=<%=character_path(character)%> > <img src="<%=(url_for(character.image)) if character.image.attached?%>"> 
     <br>
     <% end %>
 <% end %>
