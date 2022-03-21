@@ -23,8 +23,7 @@ class Navbar extends React.Component {
             }
             } > {map.title} </ option>
         )
-        console.log("navbar")
-        console.log(createCharacterWindow)
+
         return (
             <React.Fragment>
 

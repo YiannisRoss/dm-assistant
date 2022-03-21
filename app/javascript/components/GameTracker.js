@@ -11,11 +11,17 @@ class GameTracker extends React.Component {
 
     this.createCharacterWindow = this.createCharacterWindow.bind(this);
     this.createMapWindow = this.createMapWindow.bind(this);
-
+    this.props.characters.map((character) => character.isActivated = false)
   }
+
   createCharacterWindow(character) {
 
     console.log(`createCharacterWindow called on character ${character.name}`)
+    console.log(`${character.name} is activated: ${character.isActivated}`)
+    if (character.isActivated) {
+      console.log(`${character.name} has already been selected`)
+      return
+    }
     character.isActivated = true
     console.log(character)
     let newCharacterWindow = <CharacterWindow key={character.id} character={character} />;
@@ -28,8 +34,10 @@ class GameTracker extends React.Component {
 
     console.log(`createMapWindow called on map ${map.title}`)
   }
+
+
   render() {
-    this.props.characters.map((character) => character.isActivated = false)
+
 
 
 
@@ -40,6 +48,7 @@ class GameTracker extends React.Component {
         <div id="character-windows-list-container">
           {this.state.characterWindowsList}
         </div>
+        <button onClick={() => { console.log(this.props.characters) }}>CHARACTERS</button>
 
 
       </React.Fragment>
