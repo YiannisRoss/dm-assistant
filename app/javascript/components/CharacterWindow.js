@@ -6,6 +6,7 @@ class CharacterWindow extends React.Component {
         this.state = {
             isActivated: false
         };
+
     }
 
     render() {
@@ -13,6 +14,8 @@ class CharacterWindow extends React.Component {
         return (
             <React.Fragment>
                 <div>
+                    {console.log(`characterwindow state:`)}
+                    {console.log(this.state)}
                     <h2>CharacterWindow</h2>
                     <h3>{this.state.isActivated && character.name}</h3>
                 </div>
