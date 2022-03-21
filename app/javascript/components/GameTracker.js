@@ -6,6 +6,8 @@ import CharacterWindow from "./CharacterWindow";
 class GameTracker extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { characterWindowsList: [] };
+
 
     this.createCharacterWindow = this.createCharacterWindow.bind(this);
     this.createMapWindow = this.createMapWindow.bind(this);
@@ -14,6 +16,13 @@ class GameTracker extends React.Component {
   createCharacterWindow(character) {
 
     console.log(`createCharacterWindow called on character ${character.name}`)
+    character.isActivated = true
+    console.log(character)
+    let newCharacterWindow = <CharacterWindow key={character.id} character={character} />;
+    this.setState({
+      characterWindowsList: this.state.characterWindowsList.concat(newCharacterWindow)
+    });
+
   }
   createMapWindow(map) {
 
@@ -21,19 +30,16 @@ class GameTracker extends React.Component {
   }
   render() {
     this.props.characters.map((character) => character.isActivated = false)
-    for (let i = 0; i < this.props.characters.length; i++) {
-      console.log(this.props.characters[i])
-    }
 
-    function toggleCharacterWindowEnlarged() {
 
-    }
 
     return (
       <React.Fragment>
         <Navbar characters={this.props.characters} maps={this.props.maps} createCharacterWindow={this.createCharacterWindow} createMapWindow={this.createMapWindow} />
-        <CharacterWindow />
 
+        <div id="character-windows-list-container">
+          {this.state.characterWindowsList}
+        </div>
 
 
       </React.Fragment>
