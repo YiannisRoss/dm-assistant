@@ -16,8 +16,7 @@ class GameTracker extends React.Component {
 
   createCharacterWindow(character) {
 
-    console.log(`createCharacterWindow called on character ${character.name}`)
-    console.log(`${character.name} is activated: ${character.isActivated}`)
+
     if (character.isActivated) {
       console.log(`${character.name} has already been selected`)
       return
