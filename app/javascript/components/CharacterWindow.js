@@ -1,5 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
+import "../../assets/stylesheets/CharacterWindow/style.scss"
+
 class CharacterWindow extends React.Component {
     constructor(props) {
         super(props);
@@ -16,9 +18,9 @@ class CharacterWindow extends React.Component {
 
                     <h2>{character.name}</h2>
                     <h3>Stats</h3>
-                    <p>{character.stats}</p>
+                    <p className="character-attributes">{character.stats}</p>
                     <h3>Description</h3>
-                    <p>{character.description}</p>
+                    <p id="character-description" className="character-attributes">{character.description}</p>
                     <button onClick={() => { console.log(character) }}>show char details</button>
                     <img src={character.image}></img>
                 </div>
