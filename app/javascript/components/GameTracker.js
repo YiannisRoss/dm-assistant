@@ -30,7 +30,7 @@ class GameTracker extends React.Component {
     }
     character.isActivated = true
     console.log(character)
-    let newCharacterWindow = <CharacterWindow key={character.id} character={character} />;
+    let newCharacterWindow = <CharacterWindow key={character.id} character={character} charImageURL={this.props.characterImageURLs[character.id - 1]} />;
     this.setState({
       characterWindowsList: this.state.characterWindowsList.concat(newCharacterWindow)
     });
@@ -66,7 +66,7 @@ class GameTracker extends React.Component {
         <div id="character-windows-list-container">
           {this.state.characterWindowsList}
         </div>
-        <button onClick={() => { console.log(this.props.characters) }}>CHARACTERS</button>
+        <button onClick={() => { console.log(this.props) }}>props</button>
 
 
       </React.Fragment>
@@ -76,6 +76,7 @@ class GameTracker extends React.Component {
 
 GameTracker.propTypes = {
   characters: PropTypes.array,
-  maps: PropTypes.array
+  maps: PropTypes.array,
+  characterImageURLs: PropTypes.array
 };
 export default GameTracker

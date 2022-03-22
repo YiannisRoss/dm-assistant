@@ -1,4 +1,12 @@
 
+ 
+ <% characterImageURLs = [] %>
+ <%i = 0%>
+ 
+ <% @characters.each do |character| %>
 
+      <%characterImageURLs[i] = url_for(character.image) if character.image.persisted?%>
+      <%i = i+1%>
+ <%end%>  
 
-<%= react_component("GameTracker", { characters: @characters, maps: @maps }) %>
+<%= react_component("GameTracker", { characters: @characters, maps: @maps, characterImageURLs: characterImageURLs }) %>

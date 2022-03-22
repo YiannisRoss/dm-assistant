@@ -10,7 +10,7 @@ class CharacterWindow extends React.Component {
     }
 
     render() {
-        const { character } = this.props;
+        const { character, charImageURL } = this.props;
         const characterDescriptionDiv = <div>
             <h3>Description</h3>
             <p id="character-description" className="character-attributes">{character.description}</p>
@@ -29,7 +29,9 @@ class CharacterWindow extends React.Component {
                     {character.description && characterDescriptionDiv}
 
                     <button onClick={() => { console.log(character) }}>show char details</button>
-                    <img src={character.image}></img>
+                    <button onClick={() => { console.log(this.props) }}>show char window props</button>
+
+                    <img src={charImageURL}></img>
                 </div>
 
 
@@ -40,6 +42,6 @@ class CharacterWindow extends React.Component {
 
 CharacterWindow.propTypes = {
     character: PropTypes.object,
-
+    charImageURL: PropTypes.string
 };
 export default CharacterWindow
