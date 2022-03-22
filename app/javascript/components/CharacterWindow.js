@@ -11,7 +11,10 @@ class CharacterWindow extends React.Component {
 
     render() {
         const { character } = this.props;
-
+        const characterDescriptionDiv = <div>
+            <h3>Description</h3>
+            <p id="character-description" className="character-attributes">{character.description}</p>
+        </div>
         return (
             <React.Fragment>
                 <div>
@@ -19,8 +22,8 @@ class CharacterWindow extends React.Component {
                     <h2>{character.name}</h2>
                     <h3>Stats</h3>
                     <p className="character-attributes">{character.stats}</p>
-                    <h3>Description</h3>
-                    <p id="character-description" className="character-attributes">{character.description}</p>
+                    {character.description && characterDescriptionDiv}
+
                     <button onClick={() => { console.log(character) }}>show char details</button>
                     <img src={character.image}></img>
                 </div>
