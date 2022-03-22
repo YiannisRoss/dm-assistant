@@ -6,6 +6,7 @@ import CharacterWindow from "./CharacterWindow";
 import MapWindow from "./MapWindow.js";
 
 
+
 class GameTracker extends React.Component {
   constructor(props) {
     super(props);

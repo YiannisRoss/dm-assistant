@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import "../../assets/stylesheets/CharacterWindow/style.scss"
+import "../../assets/stylesheets/MapWindow.scss"
 
 class MapWindow extends React.Component {
     constructor(props) {

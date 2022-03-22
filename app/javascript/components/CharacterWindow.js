@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import "../../assets/stylesheets/CharacterWindow/style.scss"
+import "../../assets/stylesheets/CharacterWindow/CharacterWindow.scss"
 
 class CharacterWindow extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class CharacterWindow extends React.Component {
         </div>
         return (
             <React.Fragment>
-                <div>
+                <div className="character-window-div">
 
                     <h2>{character.name}</h2>
                     {character.stats && characterStatsDiv}
@@ -31,7 +31,7 @@ class CharacterWindow extends React.Component {
                     <button onClick={() => { console.log(character) }}>show char details</button>
                     <button onClick={() => { console.log(this.props) }}>show char window props</button>
 
-                    <img src={charImageURL}></img>
+                    <img src={charImageURL} className="character-img"></img>
                 </div>
 
 
