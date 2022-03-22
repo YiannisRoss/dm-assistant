@@ -24,7 +24,9 @@ class CharacterWindow extends React.Component {
             <React.Fragment>
                 <div className="character-window-div">
 
-                    <h2>{character.name}</h2>
+                    <h2>{character.name}</h2> <button onClick={() => {
+                        this.props.minimizeCharacterWindow(character)
+                    }}>Hide</button>
                     {character.stats && characterStatsDiv}
                     {character.description && characterDescriptionDiv}
 

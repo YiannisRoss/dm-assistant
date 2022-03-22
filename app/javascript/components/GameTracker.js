@@ -15,7 +15,7 @@ class GameTracker extends React.Component {
       mapWindowsList: []
     };
 
-
+    this.minimizeCharacterWindow = this.minimizeCharacterWindow.bind(this);
     this.createCharacterWindow = this.createCharacterWindow.bind(this);
     this.createMapWindow = this.createMapWindow.bind(this);
     this.props.characters.map((character) => character.isActivated = false)
@@ -24,14 +24,15 @@ class GameTracker extends React.Component {
 
   createCharacterWindow(character) {
 
-
     if (character.isActivated) {
       console.log(`${character.name} has already been selected`)
       return
     }
     character.isActivated = true
     console.log(character)
-    let newCharacterWindow = <CharacterWindow key={character.id} character={character} charImageURL={this.props.characterImageURLs[character.id - 1]} />;
+    let newCharacterWindow = <CharacterWindow key={character.id} character={character} charImageURL={this.props.characterImageURLs[character.id - 1]} minimizeCharacterWindow={this.minimizeCharacterWindow} />;
+    console.log("ahfhahadfhafdhfadhadf")
+
     this.setState({
       characterWindowsList: this.state.characterWindowsList.concat(newCharacterWindow)
     });
@@ -49,6 +50,22 @@ class GameTracker extends React.Component {
     this.setState({
       mapWindowsList: this.state.mapWindowsList.concat(newMapWindow)
     });
+  }
+  minimizeCharacterWindow(character) {
+
+    for (let i = 0; i < this.state.characterWindowsList.length; i++) {
+      if (this.state.characterWindowsList[i].key == character.id) {
+        character.isActivated = false
+        let newCharacterWindowsList = this.state.characterWindowsList
+        let index = newCharacterWindowsList.indexOf(newCharacterWindowsList[i])
+        newCharacterWindowsList.splice(index, 1)
+        this.setState({
+          characterWindowsList: newCharacterWindowsList
+        })
+        return
+      }
+
+    }
   }
 
 
