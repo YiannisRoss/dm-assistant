@@ -2,7 +2,7 @@
 
     
 
-    <img src="<%=(url_for(@character.image))%>" >
+    <img src="<%=url_for(@character.image) if @character.image.persisted?%>" > 
 
 
 
