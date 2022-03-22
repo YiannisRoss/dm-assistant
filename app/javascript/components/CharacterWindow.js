@@ -15,13 +15,17 @@ class CharacterWindow extends React.Component {
             <h3>Description</h3>
             <p id="character-description" className="character-attributes">{character.description}</p>
         </div>
+        const characterStatsDiv = <div>
+            <h3>Stats</h3>
+            <p className="character-attributes">{character.stats}</p>
+
+        </div>
         return (
             <React.Fragment>
                 <div>
 
                     <h2>{character.name}</h2>
-                    <h3>Stats</h3>
-                    <p className="character-attributes">{character.stats}</p>
+                    {character.stats && characterStatsDiv}
                     {character.description && characterDescriptionDiv}
 
                     <button onClick={() => { console.log(character) }}>show char details</button>
