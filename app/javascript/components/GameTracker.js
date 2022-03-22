@@ -3,15 +3,22 @@ import PropTypes from "prop-types"
 import Navbar
   from "./Navbar";
 import CharacterWindow from "./CharacterWindow";
+import MapWindow from "./MapWindow.js";
+
+
 class GameTracker extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { characterWindowsList: [] };
+    this.state = {
+      characterWindowsList: [],
+      mapWindowsList: []
+    };
 
 
     this.createCharacterWindow = this.createCharacterWindow.bind(this);
     this.createMapWindow = this.createMapWindow.bind(this);
     this.props.characters.map((character) => character.isActivated = false)
+    this.props.maps.map((map) => map.isActivated = false)
   }
 
   createCharacterWindow(character) {
@@ -31,7 +38,16 @@ class GameTracker extends React.Component {
   }
   createMapWindow(map) {
 
-    console.log(`createMapWindow called on map ${map.title}`)
+    if (map.isActivated) {
+      console.log(`${map.title} has already been selected`)
+      return
+    }
+    map.isActivated = true
+    console.log(map)
+    let newMapWindow = <MapWindow key={map.id} map={map} />;
+    this.setState({
+      mapWindowsList: this.state.mapWindowsList.concat(newMapWindow)
+    });
   }
 
 
@@ -44,6 +60,9 @@ class GameTracker extends React.Component {
       <React.Fragment>
         <Navbar characters={this.props.characters} maps={this.props.maps} createCharacterWindow={this.createCharacterWindow} createMapWindow={this.createMapWindow} />
 
+        <div id="map-windows-list-container">
+          {this.state.mapWindowsList}
+        </div>
         <div id="character-windows-list-container">
           {this.state.characterWindowsList}
         </div>
