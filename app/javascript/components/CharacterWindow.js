@@ -28,9 +28,6 @@ class CharacterWindow extends React.Component {
                     {character.stats && characterStatsDiv}
                     {character.description && characterDescriptionDiv}
 
-                    <button onClick={() => { console.log(character) }}>show char details</button>
-                    <button onClick={() => { console.log(this.props) }}>show char window props</button>
-
                     <img src={charImageURL} className="character-img"></img>
                 </div>
 
