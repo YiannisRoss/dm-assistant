@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+"../../assets/stylesheets/Navbar.scss"
 class Navbar extends React.Component {
     constructor(props) {
         super(props);
@@ -26,16 +27,16 @@ class Navbar extends React.Component {
 
         return (
             <React.Fragment>
+                <div id='navbar-container'>
 
-                <h2>Navbar</h2>
-                <select>
-                    {listCharacters}
-                </select>
+                    <select>
+                        {listCharacters}
+                    </select>
 
-                <select>
-                    {listMaps}
-                </select>
-
+                    <select>
+                        {listMaps}
+                    </select>
+                </div>
 
             </React.Fragment>
         );
