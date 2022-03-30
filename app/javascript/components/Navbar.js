@@ -30,8 +30,9 @@ class Navbar extends React.Component {
             <React.Fragment>
                 <div id='navbar-container'>
 
-                    <DropdownExpandable dropdownOptions={this.props.characters} />
-                    <DropdownExpandable dropdownOptions={this.props.maps} />
+
+                    <DropdownExpandable dropdownOptions={this.props.characters} arrayName={'Characters'} />
+                    <DropdownExpandable dropdownOptions={this.props.maps} arrayName={'Maps'} />
 
                     {/* <select>
                         {listCharacters}
