@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-"../../assets/stylesheets/Navbar.scss"
+import "../../assets/stylesheets/Navbar.scss"
+import DropdownExpandable from "./DropdownExpandable";
 class Navbar extends React.Component {
     constructor(props) {
         super(props);
@@ -29,13 +30,16 @@ class Navbar extends React.Component {
             <React.Fragment>
                 <div id='navbar-container'>
 
-                    <select>
+                    <DropdownExpandable dropdownOptions={this.props.characters} />
+                    <DropdownExpandable dropdownOptions={this.props.maps} />
+
+                    {/* <select>
                         {listCharacters}
                     </select>
 
                     <select>
                         {listMaps}
-                    </select>
+                    </select> */}
                 </div>
 
             </React.Fragment>

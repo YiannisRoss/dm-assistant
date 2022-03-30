@@ -76,17 +76,18 @@ class GameTracker extends React.Component {
 
     return (
       <React.Fragment>
-        <Navbar characters={this.props.characters} maps={this.props.maps} createCharacterWindow={this.createCharacterWindow} createMapWindow={this.createMapWindow} />
+        <div id='container'>
+          <Navbar characters={this.props.characters} maps={this.props.maps} createCharacterWindow={this.createCharacterWindow} createMapWindow={this.createMapWindow} />
 
-        <div id="map-windows-list-container">
-          {this.state.mapWindowsList}
+          <div id="map-windows-list-container">
+            {this.state.mapWindowsList}
+          </div>
+          <div id="character-windows-list-container">
+            {this.state.characterWindowsList}
+          </div>
+          <button onClick={() => { console.log(this.props) }}>props</button>
+
         </div>
-        <div id="character-windows-list-container">
-          {this.state.characterWindowsList}
-        </div>
-        <button onClick={() => { console.log(this.props) }}>props</button>
-
-
       </React.Fragment>
     );
   }
