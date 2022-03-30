@@ -14,7 +14,10 @@ class DropdownExpandable extends React.Component {
             <option key={option.id} onClick={() => {
 
             }
-            }> {option.name || option.title} </option>
+            } onMouseOver={() => {
+                console.log(`mouse over ${(option.name || option.title)}`)
+            }
+            }> {option.name || option.title} </option >
         )
 
         let dropdownPopup = <div className="dropdown-popup">
