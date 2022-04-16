@@ -7,7 +7,7 @@ class DropdownExpandable extends React.Component {
         this.state = { isExpanded: false }
     }
     render() {
-        const { dropdownOptions, arrayName } = this.props;
+        const { dropdownOptions, arrayName, createWindow } = this.props;
 
         const dropdownOptionsList = dropdownOptions.map((option) =>
 
@@ -16,8 +16,11 @@ class DropdownExpandable extends React.Component {
             }
             } onMouseOver={() => {
                 console.log(`mouse over ${(option.name || option.title)}`)
+
             }
-            }> {option.name || option.title} </option >
+            } onClick={() => {
+                createWindow(option)
+            }}> {option.name || option.title} </option >
         )
 
         let dropdownPopup = <div className="dropdown-popup">

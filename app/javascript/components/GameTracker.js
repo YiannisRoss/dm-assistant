@@ -31,7 +31,6 @@ class GameTracker extends React.Component {
     character.isActivated = true
     console.log(character)
     let newCharacterWindow = <CharacterWindow key={character.id} character={character} charImageURL={this.props.characterImageURLs[character.id - 1]} minimizeCharacterWindow={this.minimizeCharacterWindow} />;
-    console.log("ahfhahadfhafdhfadhadf")
 
     this.setState({
       characterWindowsList: this.state.characterWindowsList.concat(newCharacterWindow)

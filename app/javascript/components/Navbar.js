@@ -31,8 +31,8 @@ class Navbar extends React.Component {
                 <div id='navbar-container'>
 
 
-                    <DropdownExpandable dropdownOptions={this.props.characters} arrayName={'Characters'} />
-                    <DropdownExpandable dropdownOptions={this.props.maps} arrayName={'Maps'} />
+                    <DropdownExpandable dropdownOptions={this.props.characters} arrayName={'Characters'} createWindow={createCharacterWindow} />
+                    <DropdownExpandable dropdownOptions={this.props.maps} arrayName={'Maps'} createWindow={createCharacterWindow} />
 
                     {/* <select>
                         {listCharacters}
