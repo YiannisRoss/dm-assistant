@@ -45,7 +45,7 @@ class GameTracker extends React.Component {
     }
     map.isActivated = true
     console.log(map)
-    let newMapWindow = <MapWindow key={map.id} map={map} />;
+    let newMapWindow = <MapWindow key={map.id} map={map} mapImageURL={this.props.mapImageURLs[map.id - 1]} />;
     this.setState({
       mapWindowsList: this.state.mapWindowsList.concat(newMapWindow)
     });

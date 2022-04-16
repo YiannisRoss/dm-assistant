@@ -9,4 +9,13 @@
       <%i = i+1%>
  <%end%>  
 
-<%= react_component("GameTracker", { characters: @characters, maps: @maps, characterImageURLs: characterImageURLs }) %>
+ <% mapImageURLs = [] %>
+ <% i = 0 %>
+
+  <% @maps.each do |map| %>
+
+      <%mapImageURLs[i] = url_for(map.image) if map.image.persisted?%>
+      <%i = i+1%>
+ <%end%>  
+
+<%= react_component("GameTracker", { characters: @characters, maps: @maps, characterImageURLs: characterImageURLs, mapImageURLs: mapImageURLs }) %>

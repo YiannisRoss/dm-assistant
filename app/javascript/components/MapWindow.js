@@ -10,7 +10,7 @@ class MapWindow extends React.Component {
     }
 
     render() {
-        const { map } = this.props;
+        const { map, mapImageURL } = this.props;
 
 
         return (
@@ -21,7 +21,7 @@ class MapWindow extends React.Component {
 
 
                     <button onClick={() => { console.log(map) }}>show map details</button>
-                    <img src={map.image}></img>
+                    <img src={mapImageURL}></img>
                 </div>
 
 
