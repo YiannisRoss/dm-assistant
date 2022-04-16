@@ -16,6 +16,8 @@ class GameTracker extends React.Component {
     };
 
     this.minimizeCharacterWindow = this.minimizeCharacterWindow.bind(this);
+    this.minimizeMapWindow = this.minimizeMapWindow.bind(this);
+
     this.createCharacterWindow = this.createCharacterWindow.bind(this);
     this.createMapWindow = this.createMapWindow.bind(this);
     this.props.characters.map((character) => character.isActivated = false)
@@ -30,7 +32,8 @@ class GameTracker extends React.Component {
     }
     character.isActivated = true
     console.log(character)
-    let newCharacterWindow = <CharacterWindow key={character.id} character={character} charImageURL={this.props.characterImageURLs[character.id - 1]} minimizeCharacterWindow={this.minimizeCharacterWindow} />;
+    let newCharacterWindow = <CharacterWindow key={character.id} character={character}
+      charImageURL={this.props.characterImageURLs[character.id - 1]} minimizeCharacterWindow={this.minimizeCharacterWindow} />;
 
     this.setState({
       characterWindowsList: this.state.characterWindowsList.concat(newCharacterWindow)
@@ -45,7 +48,8 @@ class GameTracker extends React.Component {
     }
     map.isActivated = true
     console.log(map)
-    let newMapWindow = <MapWindow key={map.id} map={map} mapImageURL={this.props.mapImageURLs[map.id - 1]} />;
+    let newMapWindow = <MapWindow key={map.id} map={map}
+      mapImageURL={this.props.mapImageURLs[map.id - 1]} minimizeMapWindow={this.minimizeMapWindow} />;
     this.setState({
       mapWindowsList: this.state.mapWindowsList.concat(newMapWindow)
     });
@@ -60,6 +64,22 @@ class GameTracker extends React.Component {
         newCharacterWindowsList.splice(index, 1)
         this.setState({
           characterWindowsList: newCharacterWindowsList
+        })
+        return
+      }
+
+    }
+  }
+  minimizeMapWindow(map) {
+
+    for (let i = 0; i < this.state.mapWindowsList.length; i++) {
+      if (this.state.mapWindowsList[i].key == map.id) {
+        map.isActivated = false
+        let newMapWindowsList = this.state.mapWindowsList
+        let index = newMapWindowsList.indexOf(newMapWindowsList[i])
+        newMapWindowsList.splice(index, 1)
+        this.setState({
+          mapWindowsList: newMapWindowsList
         })
         return
       }

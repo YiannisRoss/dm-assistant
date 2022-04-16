@@ -1,0 +1,25 @@
+.map-window-div {
+    border: 1px solid black;
+    width: 20vw;
+    position: relative;
+}
+
+.map-header {
+display: flex;
+max-width: min-content;
+}
+.map-img {
+    max-width: 100%;
+    max-height: 100%;
+
+}
+
+.hide-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+.map-attributes{
+
+    white-space: pre-line;
+}
