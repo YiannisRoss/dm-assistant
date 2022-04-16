@@ -9,11 +9,25 @@ class CharacterWindow extends React.Component {
 
     }
 
+    makeDescriptionEditable() {
+
+        console.log(`makeDescriptionEditable called on ${this.props.character.name}`)
+
+        //use ref to get character description element
+        //set to hidden
+
+        //create text input field
+        //PATCH request to backend to update char
+    }
+
     render() {
         const { character, charImageURL } = this.props;
         const characterDescriptionDiv = <div>
             <h3>Description</h3>
-            <p id="character-description" className="character-attributes">{character.description}</p>
+            <p id="character-description" className="character-attributes" onDoubleClick={() => {
+                console.log(character.name + ' description doubleclicked')
+                this.makeDescriptionEditable()
+            }}>{character.description}</p>
         </div>
         const characterStatsDiv = <div>
             <h3>Stats</h3>
