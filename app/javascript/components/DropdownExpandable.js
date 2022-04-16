@@ -16,7 +16,7 @@ class DropdownExpandable extends React.Component {
             }
             } onMouseOver={() => {
                 console.log(`mouse over ${(option.name || option.title)}`)
-
+                //perhaps add a preview on mouseover
             }
             } onClick={() => {
                 createWindow(option)
