@@ -5,34 +5,41 @@ import "../../assets/stylesheets/CharacterWindow/CharacterWindow.scss"
 class CharacterWindow extends React.Component {
     constructor(props) {
         super(props);
-
-
+        this.state = { isDescriptionUnderEdit: false };
+        this.textInput = React.createRef();
     }
 
-    makeDescriptionEditable() {
+    toggleDescriptionEditable() {
 
-        console.log(`makeDescriptionEditable called on ${this.props.character.name}`)
+        console.log(`toggleDescriptionEditable called on ${this.props.character.name}`)
 
-        //use ref to get character description element
-        //set to hidden
 
-        //create text input field
+        this.setState({
+            isDescriptionUnderEdit: !this.state.isDescriptionUnderEdit
+        })
         //PATCH request to backend to update char
     }
 
     render() {
         const { character, charImageURL } = this.props;
+
         const characterDescriptionDiv = <div>
             <h3>Description</h3>
             <p id="character-description" className="character-attributes" onDoubleClick={() => {
                 console.log(character.name + ' description doubleclicked')
-                this.makeDescriptionEditable()
+                this.toggleDescriptionEditable()
             }}>{character.description}</p>
         </div>
+
+        const characterDescriptionInput = <div>
+            <input type="text" ref={this.textInput} defaultValue={character.description} /> <button onClick={() => {
+                this.toggleDescriptionEditable()
+
+            }}>Submit</button></div>
+
         const characterStatsDiv = <div>
             <h3>Stats</h3>
             <p className="character-attributes">{character.stats}</p>
-
         </div>
         return (
             <React.Fragment>
@@ -47,8 +54,8 @@ class CharacterWindow extends React.Component {
 
                     }}>Hide</button>
                     {character.stats && characterStatsDiv}
-                    {character.description && characterDescriptionDiv}
-
+                    {(character.description && !this.state.isDescriptionUnderEdit) && characterDescriptionDiv}
+                    {this.state.isDescriptionUnderEdit && characterDescriptionInput}
 
                 </div>
 
