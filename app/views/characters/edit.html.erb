@@ -1,0 +1,32 @@
+<h1>Edit <%=@character.name %> </h1>
+
+<%= form_with model: @character do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true, required: true, value: @character.name %>
+  </div>
+
+    <img src="<%=url_for(@character.image) if @character.image.persisted?%>" > 
+
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.file_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :stats %><br>
+    <%= f.text_area :stats, value: @character.stats %>
+  </div>
+
+    <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, value: @character.description %>
+  </div>
+
+  <%= f.hidden_field :user_id, :value => @user.id%>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>

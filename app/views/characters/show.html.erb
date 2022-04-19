@@ -1,5 +1,5 @@
 <h1><%= @character.name %> </h1>
-
+<%= link_to 'Edit character', edit_character_path(@character) %>
     
 
     <img src="<%=url_for(@character.image) if @character.image.persisted?%>" > 
