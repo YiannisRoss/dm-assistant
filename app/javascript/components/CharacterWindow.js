@@ -49,14 +49,14 @@ class CharacterWindow extends React.Component {
 
     render() {
         const { charImageURL } = this.props;
-        const { character } = this.state;
+        const { character, isDescriptionUnderEdit } = this.state;
 
         const characterDescriptionDiv = <div>
             <h3>Description</h3>
             <p id="character-description" className="character-attributes" onDoubleClick={() => {
                 console.log(character.name + ' description doubleclicked')
                 this.toggleDescriptionEditable()
-            }}>{this.state.character.description}</p>
+            }}>{character.description}</p>
         </div>
 
         const characterDescriptionInput = <div>
@@ -78,12 +78,12 @@ class CharacterWindow extends React.Component {
                         <h2>{character.name}</h2>
                     </div>
                     <button className="hide-button" onClick={() => {
-                        this.props.minimizeCharacterWindow(character)
-
+                        this.props.minimizeCharacterWindow(this.props.character)
+                        console.log(character)
                     }}>Hide</button>
                     {character.stats && characterStatsDiv}
-                    {(character.description && !this.state.isDescriptionUnderEdit) && characterDescriptionDiv}
-                    {this.state.isDescriptionUnderEdit && characterDescriptionInput}
+                    {(character.description && !isDescriptionUnderEdit) && characterDescriptionDiv}
+                    {isDescriptionUnderEdit && characterDescriptionInput}
                     <button onClick={() => {
                         console.log(this.state)
                     }}>STATE</button>
