@@ -5,55 +5,58 @@ import "../../assets/stylesheets/CharacterWindow/CharacterWindow.scss"
 class CharacterWindow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { isDescriptionUnderEdit: false };
+        this.state = {
+            isDescriptionUnderEdit: false,
+            character: this.props.character
+        };
         this.textInput = React.createRef();
     }
 
+    async updateCharacterData() {
+        const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+        let newDescription = this.textInput.current.value;
+        fetch(`/api/v1/characters/${this.state.character.id}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrf
+            },
+            method: 'PATCH',
+            body: JSON.stringify({
+                character: {
+                    description: newDescription
+                }
+            })
+        }).then(response => response.json())
+            .then(newCharacterData => {
+                this.setState({
+                    character: newCharacterData
+                })
+            })
+    }
+
     toggleDescriptionEditable() {
-
-        console.log(`toggleDescriptionEditable called on ${this.props.character.name}`)
-
-
         this.setState({
             isDescriptionUnderEdit: !this.state.isDescriptionUnderEdit
         })
-
         //PATCH request to backend to update char
         if (this.state.isDescriptionUnderEdit) {
-            const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-            let newDescription = this.textInput.current.value;
-            fetch(`/api/v1/characters/${this.props.character.id}`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': csrf
-                },
-                method: 'PATCH',
-                body: JSON.stringify({
-                    character: {
-                        description: newDescription
-                    }
-                })
-
-
-            }).then(response => {
-
-                console.log(response);
-
-            })
-
-
+            this.updateCharacterData()
         }
+
+
     }
 
+
     render() {
-        const { character, charImageURL } = this.props;
+        const { charImageURL } = this.props;
+        const { character } = this.state;
 
         const characterDescriptionDiv = <div>
             <h3>Description</h3>
             <p id="character-description" className="character-attributes" onDoubleClick={() => {
                 console.log(character.name + ' description doubleclicked')
                 this.toggleDescriptionEditable()
-            }}>{character.description}</p>
+            }}>{this.state.character.description}</p>
         </div>
 
         const characterDescriptionInput = <div>
@@ -81,7 +84,9 @@ class CharacterWindow extends React.Component {
                     {character.stats && characterStatsDiv}
                     {(character.description && !this.state.isDescriptionUnderEdit) && characterDescriptionDiv}
                     {this.state.isDescriptionUnderEdit && characterDescriptionInput}
-
+                    <button onClick={() => {
+                        console.log(this.state)
+                    }}>STATE</button>
                 </div>
 
 

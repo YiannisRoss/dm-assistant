@@ -1,7 +1,9 @@
 class Api::V1::CharactersController < Api::V1::BaseController 
 
   def index
-    respond_with Character.all
+    respond_to do |format|
+      format.json  { render :json =>  Character.all }
+    end
   end
 
   def create
@@ -15,8 +17,12 @@ class Api::V1::CharactersController < Api::V1::BaseController
   def update
     character = Character.find(params[:id])
     character.update(character_params)
+    render json: character
+  end
 
-    respond_with character, json: character
+  def show
+    character = Character.find(params[:id])
+    render json: character
   end
 
   private
