@@ -9,4 +9,10 @@ Rails.application.routes.draw do
   resources :maps
   resources :characters
   resources :game_tracker, only: :index
+  
+  namespace :api do
+    namespace :v1 do
+      resources :characters, only: [:index, :create, :destroy, :update]
+    end
+  end
 end

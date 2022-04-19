@@ -24,7 +24,7 @@
     <%= f.text_area :description, value: @character.description %>
   </div>
 
-  <%= f.hidden_field :user_id, :value => @user.id%>
+  <%= f.hidden_field :user_id, :value => @character.user_id%>
 
   <div class="actions">
     <%= f.submit "Update" %>

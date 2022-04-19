@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CharactersController < ApplicationController
+  
   def new
     @character = Character.new
     @user = current_user
@@ -34,7 +35,10 @@ class CharactersController < ApplicationController
     @user = current_user
 
     @character = Character.find(params[:id])
-
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
    
   end
 

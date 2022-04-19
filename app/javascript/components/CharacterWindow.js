@@ -17,7 +17,32 @@ class CharacterWindow extends React.Component {
         this.setState({
             isDescriptionUnderEdit: !this.state.isDescriptionUnderEdit
         })
+
         //PATCH request to backend to update char
+        if (this.state.isDescriptionUnderEdit) {
+            const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+            let newDescription = this.textInput.current.value;
+            fetch(`/api/v1/characters/${this.props.character.id}`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrf
+                },
+                method: 'PATCH',
+                body: JSON.stringify({
+                    character: {
+                        description: newDescription
+                    }
+                })
+
+
+            }).then(response => {
+
+                console.log(response);
+
+            })
+
+
+        }
     }
 
     render() {
