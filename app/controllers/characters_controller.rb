@@ -65,6 +65,12 @@ class CharactersController < ApplicationController
     @character = Character.find(params[:id])
   end
 
+  def destroy
+    @character = Character.find(params[:id])
+    @character.destroy
+    redirect_to '/characters/', :notice => "Your character has been deleted"
+  end
+
   def character_params
     params.require(:character).permit(:name, :user_id, :image, :stats, :description)
   end
