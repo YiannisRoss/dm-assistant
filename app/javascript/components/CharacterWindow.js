@@ -20,24 +20,10 @@ class CharacterWindow extends React.Component {
     async updateCharacterData() {
         const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
         let newCharacter = this.state.character
-        if (this.nameInput.current == null) {
-            newCharacter.name = this.state.character.name;
-        }
-        else {
-            newCharacter.name = this.nameInput.current.value
-        }
-        if (this.descriptionInput.current == null) {
-            newCharacter.description = this.state.character.description;
-        }
-        else {
-            newCharacter.description = this.descriptionInput.current.value
-        }
-        if (this.statsInput.current == null) {
-            newCharacter.stats = this.state.character.stats;
-        }
-        else {
-            newCharacter.stats = this.statsInput.current.value
-        }
+        this.nameInput.current == null ? newCharacter.name = this.state.character.name : newCharacter.name = this.nameInput.current.value
+        this.descriptionInput.current == null ? newCharacter.description = this.state.character.description : newCharacter.description = this.descriptionInput.current.value
+        this.statsInput.current == null ? newCharacter.stats = this.state.character.stats : newCharacter.stats = this.statsInput.current.value
+
         this.setState({
             character: newCharacter
         })
