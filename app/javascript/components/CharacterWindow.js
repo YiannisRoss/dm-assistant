@@ -6,15 +6,34 @@ class CharacterWindow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            isStatsUnderEdit: false,
             isDescriptionUnderEdit: false,
             character: this.props.character
         };
-        this.textInput = React.createRef();
+        this.descriptionInput = React.createRef();
+        this.statsInput = React.createRef();
+
     }
 
     async updateCharacterData() {
         const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-        let newDescription = this.textInput.current.value;
+        let newCharacter = this.state.character
+        if (this.descriptionInput.current == null) {
+            newCharacter.description = this.state.character.description;
+        }
+        else {
+            newCharacter.description = this.descriptionInput.current.value
+        }
+        if (this.statsInput.current == null) {
+            newCharacter.stats = this.state.character.stats;
+        }
+        else {
+            newCharacter.stats = this.statsInput.current.value
+        }
+        this.setState({
+            character: newCharacter
+        })
+
         fetch(`/api/v1/characters/${this.state.character.id}`, {
             headers: {
                 'Content-Type': 'application/json',
@@ -22,9 +41,7 @@ class CharacterWindow extends React.Component {
             },
             method: 'PATCH',
             body: JSON.stringify({
-                character: {
-                    description: newDescription
-                }
+                character: newCharacter
             })
         }).then(response => response.json())
             .then(newCharacterData => {
@@ -38,18 +55,23 @@ class CharacterWindow extends React.Component {
         this.setState({
             isDescriptionUnderEdit: !this.state.isDescriptionUnderEdit
         })
-        //PATCH request to backend to update char
         if (this.state.isDescriptionUnderEdit) {
             this.updateCharacterData()
         }
-
-
+    }
+    toggleStatsEditable() {
+        this.setState({
+            isStatsUnderEdit: !this.state.isStatsUnderEdit
+        })
+        if (this.state.isStatsUnderEdit) {
+            this.updateCharacterData()
+        }
     }
 
 
     render() {
         const { charImageURL } = this.props;
-        const { character, isDescriptionUnderEdit } = this.state;
+        const { character, isDescriptionUnderEdit, isStatsUnderEdit } = this.state;
 
         const characterDescriptionDiv = <div>
             <h3>Description</h3>
@@ -60,20 +82,27 @@ class CharacterWindow extends React.Component {
         </div>
 
         const characterDescriptionInput = <div>
-            <input type="text" ref={this.textInput} defaultValue={character.description} /> <button onClick={() => {
+            <input type="text" ref={this.descriptionInput} defaultValue={character.description} /> <button onClick={() => {
                 this.toggleDescriptionEditable()
 
             }}>Submit</button></div>
 
         const characterStatsDiv = <div>
             <h3>Stats</h3>
-            <p className="character-attributes">{character.stats}</p>
+            <p className="character-attributes" onDoubleClick={() => {
+                this.toggleStatsEditable()
+            }}>{character.stats}</p>
         </div>
+        const characterStatsInput = <div>
+            <input type="text" ref={this.statsInput} defaultValue={character.stats} /> <button onClick={() => {
+                this.toggleStatsEditable()
+
+            }}>Submit</button></div>
+
         return (
             <React.Fragment>
                 <div className="character-window-div">
                     <div className="character-header">
-
                         <img src={charImageURL} className="character-img"></img>
                         <h2>{character.name}</h2>
                     </div>
@@ -82,8 +111,11 @@ class CharacterWindow extends React.Component {
                         console.log(character)
                     }}>Hide</button>
                     {character.stats && characterStatsDiv}
+                    {isStatsUnderEdit && characterStatsInput}
                     {(character.description && !isDescriptionUnderEdit) && characterDescriptionDiv}
                     {isDescriptionUnderEdit && characterDescriptionInput}
+
+
                     <button onClick={() => {
                         console.log(this.state)
                     }}>STATE</button>
