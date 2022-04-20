@@ -94,7 +94,7 @@ class CharacterWindow extends React.Component {
 
         }}>{character.name}</h2>
         const characterNameInput = <div>
-            <input type="text" ref={this.nameInput} defaultValue={character.name} /> <button onClick={() => {
+            <textarea ref={this.nameInput} defaultValue={character.name} /> <button onClick={() => {
                 this.toggleNameEditable()
 
             }}>Submit</button></div>
@@ -107,7 +107,7 @@ class CharacterWindow extends React.Component {
         </div>
 
         const characterDescriptionInput = <div>
-            <input type="text" ref={this.descriptionInput} defaultValue={character.description} /> <button onClick={() => {
+            <textarea ref={this.descriptionInput} defaultValue={character.description} /> <button onClick={() => {
                 this.toggleDescriptionEditable()
 
             }}>Submit</button></div>
@@ -119,7 +119,7 @@ class CharacterWindow extends React.Component {
             }}>{character.stats}</p>
         </div>
         const characterStatsInput = <div>
-            <input type="text" ref={this.statsInput} defaultValue={character.stats} /> <button onClick={() => {
+            <textarea ref={this.statsInput} defaultValue={character.stats} /> <button onClick={() => {
                 this.toggleStatsEditable()
 
             }}>Submit</button></div>

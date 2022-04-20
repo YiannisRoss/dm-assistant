@@ -6,6 +6,7 @@
 
 .character-header {
 display: flex;
+flex-direction: column;
 max-width: min-content;
 }
 .character-img {
