@@ -11,6 +11,7 @@ class GameTracker extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      characters: this.props.characters,
       characterWindowsList: [],
       mapWindowsList: []
     };
@@ -20,8 +21,19 @@ class GameTracker extends React.Component {
 
     this.createCharacterWindow = this.createCharacterWindow.bind(this);
     this.createMapWindow = this.createMapWindow.bind(this);
-    this.props.characters.map((character) => character.isActivated = false)
+    this.state.characters.map((character) => character.isActivated = false)
     this.props.maps.map((map) => map.isActivated = false)
+  }
+  async getCharacters() {
+    fetch(`/api/v1/characters.json`, {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'GET'
+    }).then(response => response.json())
+      .then(charactersData => {
+        this.setState({
+          characters: charactersData
+        })
+      })
   }
 
   createCharacterWindow(character) {
@@ -65,10 +77,13 @@ class GameTracker extends React.Component {
         this.setState({
           characterWindowsList: newCharacterWindowsList
         })
+        this.getCharacters()
         return
       }
 
     }
+    console.log('minimize character window is getting characters')
+    getCharacters()
   }
   minimizeMapWindow(map) {
 
@@ -96,7 +111,7 @@ class GameTracker extends React.Component {
     return (
       <React.Fragment>
         <div id='container'>
-          <Navbar characters={this.props.characters} maps={this.props.maps} createCharacterWindow={this.createCharacterWindow} createMapWindow={this.createMapWindow} />
+          <Navbar characters={this.state.characters} maps={this.props.maps} createCharacterWindow={this.createCharacterWindow} createMapWindow={this.createMapWindow} />
 
           <div id="map-windows-list-container">
             {this.state.mapWindowsList}
