@@ -69,6 +69,7 @@ class CharacterWindow extends React.Component {
     }
 
 
+
     render() {
         const { charImageURL } = this.props;
         const { character, isDescriptionUnderEdit, isStatsUnderEdit } = this.state;

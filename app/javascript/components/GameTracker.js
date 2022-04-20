@@ -18,7 +18,7 @@ class GameTracker extends React.Component {
 
     this.minimizeCharacterWindow = this.minimizeCharacterWindow.bind(this);
     this.minimizeMapWindow = this.minimizeMapWindow.bind(this);
-
+    this.createDefaultCharacter = this.createDefaultCharacter.bind(this);
     this.createCharacterWindow = this.createCharacterWindow.bind(this);
     this.createMapWindow = this.createMapWindow.bind(this);
     this.state.characters.map((character) => character.isActivated = false)
@@ -36,6 +36,28 @@ class GameTracker extends React.Component {
       })
   }
 
+  async createDefaultCharacter() {
+    console.log('creating default char')
+    let defaultCharacter = {
+      name: 'default char name',
+      user_id: this.props.current_user.id,
+      description: '',
+      stats: ''
+    }
+
+    fetch(`/api/v1/characters`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector("meta[name='csrf-token']").getAttribute("content")
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        character: defaultCharacter
+      })
+    }).then(response => response.json())
+      .then(response => this.getCharacters())
+
+  }
   createCharacterWindow(character) {
 
     if (character.isActivated) {
@@ -111,7 +133,12 @@ class GameTracker extends React.Component {
     return (
       <React.Fragment>
         <div id='container'>
-          <Navbar characters={this.state.characters} maps={this.props.maps} createCharacterWindow={this.createCharacterWindow} createMapWindow={this.createMapWindow} />
+          <Navbar characters={this.state.characters}
+            maps={this.props.maps}
+            createCharacterWindow={this.createCharacterWindow}
+            createMapWindow={this.createMapWindow}
+            createDefaultCharacter={this.createDefaultCharacter}
+          />
 
           <div id="map-windows-list-container">
             {this.state.mapWindowsList}

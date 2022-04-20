@@ -18,4 +18,4 @@
       <%i = i+1%>
  <%end%>  
 
-<%= react_component("GameTracker", { characters: @characters, maps: @maps, characterImageURLs: characterImageURLs, mapImageURLs: mapImageURLs }) %>
+<%= react_component("GameTracker", { current_user: current_user, characters: @characters, maps: @maps, characterImageURLs: characterImageURLs, mapImageURLs: mapImageURLs }) %>

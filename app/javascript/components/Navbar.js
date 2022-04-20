@@ -10,7 +10,7 @@ class Navbar extends React.Component {
     }
 
     render() {
-        const { createMapWindow, createCharacterWindow } = this.props;
+        const { createMapWindow, createCharacterWindow, createDefaultCharacter } = this.props;
         const listCharacters = this.props.characters.map((character) =>
 
             <option key={character.id} onClick={() => {
@@ -31,8 +31,19 @@ class Navbar extends React.Component {
                 <div id='navbar-container'>
 
 
-                    <DropdownExpandable dropdownOptions={this.props.characters} arrayName={'Characters'} createWindow={createCharacterWindow} />
-                    <DropdownExpandable dropdownOptions={this.props.maps} arrayName={'Maps'} createWindow={createMapWindow} />
+                    <DropdownExpandable
+                        dropdownOptions={this.props.characters}
+                        arrayName={'Characters'}
+                        createWindow={createCharacterWindow}
+                        createDefaultOption={createDefaultCharacter}
+                    />
+                    <DropdownExpandable
+                        dropdownOptions={this.props.maps}
+                        arrayName={'Maps'}
+                        createWindow={createMapWindow}
+                        createDefaultOption={createDefaultCharacter} //switch to map
+
+                    />
 
                     {/* <select>
                         {listCharacters}
