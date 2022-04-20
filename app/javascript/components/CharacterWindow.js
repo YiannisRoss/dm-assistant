@@ -6,10 +6,12 @@ class CharacterWindow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            isNameUnderEdit: false,
             isStatsUnderEdit: false,
             isDescriptionUnderEdit: false,
             character: this.props.character
         };
+        this.nameInput = React.createRef();
         this.descriptionInput = React.createRef();
         this.statsInput = React.createRef();
 
@@ -18,6 +20,12 @@ class CharacterWindow extends React.Component {
     async updateCharacterData() {
         const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
         let newCharacter = this.state.character
+        if (this.nameInput.current == null) {
+            newCharacter.name = this.state.character.name;
+        }
+        else {
+            newCharacter.name = this.nameInput.current.value
+        }
         if (this.descriptionInput.current == null) {
             newCharacter.description = this.state.character.description;
         }
@@ -50,7 +58,14 @@ class CharacterWindow extends React.Component {
                 })
             })
     }
-
+    toggleNameEditable() {
+        this.setState({
+            isNameUnderEdit: !this.state.isNameUnderEdit
+        })
+        if (this.state.isNameUnderEdit) {
+            this.updateCharacterData()
+        }
+    }
     toggleDescriptionEditable() {
         this.setState({
             isDescriptionUnderEdit: !this.state.isDescriptionUnderEdit
@@ -72,8 +87,17 @@ class CharacterWindow extends React.Component {
 
     render() {
         const { charImageURL } = this.props;
-        const { character, isDescriptionUnderEdit, isStatsUnderEdit } = this.state;
+        const { character, isDescriptionUnderEdit, isStatsUnderEdit, isNameUnderEdit } = this.state;
 
+        const characterNameHeader = <h2 onDoubleClick={() => {
+            this.toggleNameEditable()
+
+        }}>{character.name}</h2>
+        const characterNameInput = <div>
+            <input type="text" ref={this.nameInput} defaultValue={character.name} /> <button onClick={() => {
+                this.toggleNameEditable()
+
+            }}>Submit</button></div>
         const characterDescriptionDiv = <div>
             <h3>Description</h3>
             <p id="character-description" className="character-attributes" onDoubleClick={() => {
@@ -105,7 +129,8 @@ class CharacterWindow extends React.Component {
                 <div className="character-window-div">
                     <div className="character-header">
                         <img src={charImageURL} className="character-img"></img>
-                        <h2>{character.name}</h2>
+                        {!isNameUnderEdit && characterNameHeader}
+                        {isNameUnderEdit && characterNameInput}
                     </div>
                     <button className="hide-button" onClick={() => {
                         this.props.minimizeCharacterWindow(this.props.character)
