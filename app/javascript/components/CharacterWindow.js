@@ -136,7 +136,7 @@ class CharacterWindow extends React.Component {
                         this.props.minimizeCharacterWindow(this.props.character)
                         console.log(character)
                     }}>Hide</button>
-                    {character.stats && characterStatsDiv}
+                    {!isStatsUnderEdit && characterStatsDiv}
                     {isStatsUnderEdit && characterStatsInput}
                     {(character.description && !isDescriptionUnderEdit) && characterDescriptionDiv}
                     {isDescriptionUnderEdit && characterDescriptionInput}
