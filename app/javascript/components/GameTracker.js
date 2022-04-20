@@ -59,35 +59,39 @@ class GameTracker extends React.Component {
 
   }
   createCharacterWindow(character) {
-
     if (character.isActivated) {
       console.log(`${character.name} has already been selected`)
       return
     }
     character.isActivated = true
-    console.log(character)
-    let newCharacterWindow = <CharacterWindow key={character.id} character={character}
-      charImageURL={this.props.characterImageURLs[character.id - 1]} minimizeCharacterWindow={this.minimizeCharacterWindow} />;
+
+    let newCharacterWindow = <CharacterWindow
+      key={character.id}
+      character={character}
+      charImageURL={this.props.characterImageURLs[character.id - 1]}
+      minimizeCharacterWindow={this.minimizeCharacterWindow} />;
 
     this.setState({
       characterWindowsList: this.state.characterWindowsList.concat(newCharacterWindow)
     });
-
   }
   createMapWindow(map) {
-
     if (map.isActivated) {
       console.log(`${map.title} has already been selected`)
       return
     }
     map.isActivated = true
-    console.log(map)
-    let newMapWindow = <MapWindow key={map.id} map={map}
-      mapImageURL={this.props.mapImageURLs[map.id - 1]} minimizeMapWindow={this.minimizeMapWindow} />;
+
+    let newMapWindow = <MapWindow
+      key={map.id} map={map}
+      mapImageURL={this.props.mapImageURLs[map.id - 1]}
+      minimizeMapWindow={this.minimizeMapWindow} />;
+
     this.setState({
       mapWindowsList: this.state.mapWindowsList.concat(newMapWindow)
     });
   }
+
   minimizeCharacterWindow(character) {
 
     for (let i = 0; i < this.state.characterWindowsList.length; i++) {
@@ -107,8 +111,8 @@ class GameTracker extends React.Component {
     console.log('minimize character window is getting characters')
     getCharacters()
   }
-  minimizeMapWindow(map) {
 
+  minimizeMapWindow(map) {
     for (let i = 0; i < this.state.mapWindowsList.length; i++) {
       if (this.state.mapWindowsList[i].key == map.id) {
         map.isActivated = false
@@ -124,12 +128,7 @@ class GameTracker extends React.Component {
     }
   }
 
-
   render() {
-
-
-
-
     return (
       <React.Fragment>
         <div id='container'>
