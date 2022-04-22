@@ -8,7 +8,17 @@ class Api::V1::CharactersController < Api::V1::BaseController
   end
 
   def import
-    puts 'import char controller from api'
+    respond_to do |format|
+      format.all { 
+        imported_file_data = params[:character_data_file].read
+        data_hash = JSON::parse(imported_file_data)
+        data_hash.each do |character_data| 
+          character_data = character_data.except(:id, :user_id)
+          Character.create(character_data)
+        end
+        #Character.create(params[:character_data_file].read[0].to_h)
+      }
+    end
 
     redirect_to action: :index
 
