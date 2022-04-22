@@ -1,9 +1,12 @@
 <h1>My Characters</h1>
 <%= form_with url: import_api_v1_characters_url do |f| %>
+  <%= f.label :import_characters %> <br>
   <%= f.file_field :character_data_file %>
   <%= f.submit "Submit" %>
 <% end %>
-<%= link_to 'Export character data', '/api/v1/characters.export' %>
+<%= button_to 'Export character data', '/api/v1/characters.export' unless @characters.empty? %>
+  
+
 <br>
 
 
