@@ -1,4 +1,7 @@
 <h1>My Characters</h1>
+<%= form_with @characters do |f| %>
+  <%= f.file_field :character_data_file %>
+<% end %>
 <%= link_to 'Export character data', '/api/v1/characters.export' %>
 <br>
 
