@@ -8,7 +8,9 @@ class Api::V1::CharactersController < Api::V1::BaseController
   end
 
   def import
+    puts 'import char controller from api'
 
+    redirect_to action: :index
 
   end
 
