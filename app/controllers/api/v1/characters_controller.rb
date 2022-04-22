@@ -13,8 +13,12 @@ class Api::V1::CharactersController < Api::V1::BaseController
         imported_file_data = params[:character_data_file].read
         data_hash = JSON::parse(imported_file_data)
         data_hash.each do |character_data| 
-          character_data = character_data.except(:id, :user_id)
+          
+          character_data = character_data.except("id", "user_id")
+          character_data[:user_id] = current_user.id
+
           Character.create(character_data)
+
         end
         redirect_to characters_url, notice: 'Character import finalized'
       }
