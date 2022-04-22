@@ -16,11 +16,11 @@ class Api::V1::CharactersController < Api::V1::BaseController
           character_data = character_data.except(:id, :user_id)
           Character.create(character_data)
         end
-        #Character.create(params[:character_data_file].read[0].to_h)
+        redirect_to characters_url, notice: 'Character import finalized'
       }
     end
 
-    redirect_to action: :index
+    
 
   end
 
