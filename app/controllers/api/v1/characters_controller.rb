@@ -3,7 +3,25 @@ class Api::V1::CharactersController < Api::V1::BaseController
   def index
     respond_to do |format|
       format.json  { render :json =>  Character.all }
+      format.export { send_data(Character.all.to_json, filename: 'characters.export') }
     end
+  end
+
+  def import
+    respond_to do |format|
+      format.all { 
+        imported_file_data = params[:character_data_file].read
+        data_hash = JSON::parse(imported_file_data)
+        data_hash.each do |character_data| 
+          character_data = character_data.except(:id, :user_id)
+          Character.create(character_data)
+        end
+        redirect_to characters_url, notice: 'Character import finalized'
+      }
+    end
+
+    
+
   end
 
   def create
