@@ -72,7 +72,7 @@ class CharacterWindow extends React.Component {
 
 
     render() {
-        const { charImageURL } = this.props;
+
         const { character, isDescriptionUnderEdit, isStatsUnderEdit, isNameUnderEdit } = this.state;
 
         const characterNameHeader = <h2 onDoubleClick={() => {
@@ -114,7 +114,7 @@ class CharacterWindow extends React.Component {
             <React.Fragment>
                 <div className="character-window-div">
                     <div className="character-header">
-                        <img src={charImageURL} className="character-img"></img>
+                        <img src={character.image_url} className="character-img"></img>
                         {!isNameUnderEdit && characterNameHeader}
                         {isNameUnderEdit && characterNameInput}
                     </div>

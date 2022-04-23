@@ -1,7 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Navbar
-  from "./Navbar";
+import Navbar from "./Navbar";
 import CharacterWindow from "./CharacterWindow";
 import MapWindow from "./MapWindow.js";
 
@@ -68,7 +67,6 @@ class GameTracker extends React.Component {
     let newCharacterWindow = <CharacterWindow
       key={character.id}
       character={character}
-      charImageURL={character.image_url}
       minimizeCharacterWindow={this.minimizeCharacterWindow} />;
 
     this.setState({
