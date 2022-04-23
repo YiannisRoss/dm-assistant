@@ -145,7 +145,7 @@ class GameTracker extends React.Component {
           <div id="character-windows-list-container">
             {this.state.characterWindowsList}
           </div>
-          <button onClick={() => { console.log(this.props) }}>props</button>
+
 
         </div>
       </React.Fragment>

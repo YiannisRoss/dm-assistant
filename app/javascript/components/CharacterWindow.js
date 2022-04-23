@@ -127,10 +127,6 @@ class CharacterWindow extends React.Component {
                     {(character.description && !isDescriptionUnderEdit) && characterDescriptionDiv}
                     {isDescriptionUnderEdit && characterDescriptionInput}
 
-
-                    <button onClick={() => {
-                        console.log(this.state)
-                    }}>STATE</button>
                 </div>
 
 
