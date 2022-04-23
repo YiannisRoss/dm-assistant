@@ -35,7 +35,7 @@ class MapWindow extends React.Component {
                     <Magnifier
                     className="map-img"
                     imageSrc={mapImageURL}
-                    imageAlt="Example"
+                    imageAlt={`${map.title} image`}
                     // largeImageSrc="./large-image.jpg" // Optional
                     mouseActivation={MOUSE_ACTIVATION.DOUBLE_CLICK} // Optional
                     touchActivation={TOUCH_ACTIVATION.DOUBLE_TAP} // Optional
