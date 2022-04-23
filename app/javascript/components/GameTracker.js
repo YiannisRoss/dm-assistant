@@ -68,7 +68,7 @@ class GameTracker extends React.Component {
     let newCharacterWindow = <CharacterWindow
       key={character.id}
       character={character}
-      charImageURL={this.props.characterImageURLs[character.id - 1]}
+      charImageURL={character.image_url}
       minimizeCharacterWindow={this.minimizeCharacterWindow} />;
 
     this.setState({

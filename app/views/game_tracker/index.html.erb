@@ -1,13 +1,24 @@
-
+<% characters_by_id = [] %>
+<% @characters.each do |character| 
+     character_data = {
+          id: character.id,
+          name: character.name,
+          stats: character.stats,
+          description: character.description,
+          user_id: character.user_id,
+          image_url: nil
+     }
+     %>
+      <% if character.image.persisted? %>
+          <% character_data[:image_url] = url_for(character.image) %>
+     <% else %>
+          <%character_data[:image_url] = nil %>
+     <% end%>
+     <% characters_by_id.push(character_data) %>
+<% end %>
+<% puts 'characters by id built' %>
+<% puts characters_by_id %>
  
- <% characterImageURLs = [] %>
- <%i = 0%>
- 
- <% @characters.each do |character| %>
-
-      <%characterImageURLs[i] = url_for(character.image) if character.image.persisted?%>
-      <%i = i+1%>
- <%end%>  
 
  <% mapImageURLs = [] %>
  <% i = 0 %>
@@ -18,4 +29,4 @@
       <%i = i+1%>
  <%end%>  
 
-<%= react_component("GameTracker", { current_user: current_user, characters: @characters, maps: @maps, characterImageURLs: characterImageURLs, mapImageURLs: mapImageURLs }) %>
+<%= react_component("GameTracker", { current_user: current_user, characters: characters_by_id, maps: @maps, mapImageURLs: mapImageURLs }) %>
