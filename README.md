@@ -9,3 +9,4 @@ Character and map creation, with images
 Character backup exporting and importing
 
 React component GameTracker.js allows for live character creation and editing with the rails API
+  - map magnification on doubleclick with https://www.npmjs.com/package/react-image-magnifiers
