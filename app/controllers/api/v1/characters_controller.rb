@@ -17,7 +17,25 @@ class Api::V1::CharactersController < Api::V1::BaseController
     end
     respond_to do |format|
       format.json { render json: characters_with_img_URL }
-      format.export { send_data(characters.to_json, filename: 'characters.export') }
+      format.export { 
+        #take each character.image
+        exportable_characters = []
+        characters.each do |character| 
+          character_data = {
+            id: character.id,
+            name: character.name,
+            stats: character.stats,
+            description: character.description,
+            user_id: character.user_id
+          }
+          character_data[:image] = Base64.encode64(character.image.to_s) if character.image.persisted?
+          exportable_characters.push(character_data)
+
+        end
+        #encode to base64
+        #pass as key/value pair in new array
+        send_data(exportable_characters.to_json, filename: 'characters.export') 
+      }
     end
   end
 
@@ -36,6 +54,7 @@ class Api::V1::CharactersController < Api::V1::BaseController
       end
     end
   end
+
 
   def create
     respond_with :api, :v1, Character.create(character_params)
