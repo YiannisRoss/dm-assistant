@@ -1,9 +1,9 @@
 class Api::V1::CharactersController < Api::V1::BaseController 
 
   def index
-    @characters = Character.all
-    @characters_with_img_URL = [] 
-     @characters.each do |character| 
+    characters = Character.all
+    characters_with_img_URL = [] 
+     characters.each do |character| 
          character_data = {
               id: character.id,
               name: character.name,
@@ -18,11 +18,11 @@ class Api::V1::CharactersController < Api::V1::BaseController
           else 
               character_data[:image_url] = nil 
           end
-          @characters_with_img_URL.push(character_data) 
+          characters_with_img_URL.push(character_data) 
      end 
     respond_to do |format|
-      format.json  { render :json =>  @characters_with_img_URL }
-      format.export { send_data(@characters_with_img_URL.to_json, filename: 'characters.export') }
+      format.json  { render :json =>  characters_with_img_URL }
+      format.export { send_data(characters.to_json, filename: 'characters.export') }
     end
   end
 
@@ -42,9 +42,6 @@ class Api::V1::CharactersController < Api::V1::BaseController
         redirect_to characters_url, notice: 'Character import finalized'
       }
     end
-
-    
-
   end
 
   def create

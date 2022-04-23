@@ -4,7 +4,7 @@
   <%= f.file_field :character_data_file %>
   <%= f.submit "Submit" %>
 <% end %>
-<%= button_to 'Export character data', '/api/v1/characters.export' unless @characters.empty? %>
+<%= link_to 'Export character data', '/api/v1/characters.export' unless @characters.empty? %>
   
 
 <br>
