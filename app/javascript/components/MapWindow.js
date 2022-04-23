@@ -15,8 +15,6 @@ class MapWindow extends React.Component {
         super(props);
 
         this.state = {
-            
-
         }
 
     }
@@ -35,6 +33,7 @@ class MapWindow extends React.Component {
                     <button onClick={() => { console.log(map) }}>show map details</button>
                         
                     <Magnifier
+                    className="map-img"
                     imageSrc={mapImageURL}
                     imageAlt="Example"
                     // largeImageSrc="./large-image.jpg" // Optional
