@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class CharactersController < ApplicationController
-  
   def new
     @character = Character.new
     @user = current_user
@@ -39,7 +38,6 @@ class CharactersController < ApplicationController
       format.html {}
       format.js {}
     end
-   
   end
 
   def update
@@ -68,7 +66,7 @@ class CharactersController < ApplicationController
   def destroy
     @character = Character.find(params[:id])
     @character.destroy
-    redirect_to '/characters/', :notice => "Your character has been deleted"
+    redirect_to '/characters/', notice: 'Your character has been deleted'
   end
 
   def character_params

@@ -10,16 +10,16 @@ class Character < ApplicationRecord
   before_save :default_values
 
   private
-  def default_values
-      self.description = 'No description yet' if self.description.empty?
-      if self.stats.empty?
-        self.stats = "STR: #{3+rand(6) + rand(6) + rand(6)}
-DEX: #{3+rand(6) + rand(6) + rand(6)}
-CON: #{3+rand(6) + rand(6) + rand(6)}
-INT: #{3+rand(6) + rand(6) + rand(6)}
-WIS: #{3+rand(6) + rand(6) + rand(6)}
-CHA: #{3+rand(6) + rand(6) + rand(6)}" 
-      end
-  end
 
+  def default_values
+    self.description = 'No description yet' if description.empty?
+    if stats.empty?
+      self.stats = "STR: #{rand(3..8) + rand(6) + rand(6)}
+DEX: #{rand(3..8) + rand(6) + rand(6)}
+CON: #{rand(3..8) + rand(6) + rand(6)}
+INT: #{rand(3..8) + rand(6) + rand(6)}
+WIS: #{rand(3..8) + rand(6) + rand(6)}
+CHA: #{rand(3..8) + rand(6) + rand(6)}"
+    end
+  end
 end
