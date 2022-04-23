@@ -10,7 +10,7 @@
 
   <div class="field">
     <%= f.label :image %><br>
-    <%= f.file_field :image %>
+    <%= f.file_field :image, required: true %>
   </div>
 
   <%= f.hidden_field :user_id, :value => @user.id%>
