@@ -12,11 +12,8 @@ class DropdownExpandable extends React.Component {
 
         const dropdownOptionsList = dropdownOptions.map((option) =>
 
-            <option key={option.id} onClick={() => {
-
-            }
-            } onMouseOver={() => {
-                console.log(`mouse over ${(option.name || option.title)}`)
+            <option key={option.id} onMouseOver={() => {
+                console.log(`mouseover ${(option.name || option.title)}`)
                 //perhaps add a preview on mouseover
             }
             } onClick={() => {
@@ -24,9 +21,6 @@ class DropdownExpandable extends React.Component {
             }}> {option.name || option.title} </option >
         )
         const additionOption = <option onClick={() => {
-
-        }
-        } onClick={() => {
             createDefaultOption()
         }}> Add {arrayName} </option >
 

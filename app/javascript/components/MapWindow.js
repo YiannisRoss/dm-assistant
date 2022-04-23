@@ -40,7 +40,6 @@ class MapWindow extends React.Component {
                     mouseActivation={MOUSE_ACTIVATION.DOUBLE_CLICK} // Optional
                     touchActivation={TOUCH_ACTIVATION.DOUBLE_TAP} // Optional
                     />
-                    {/* <img src={mapImageURL}></img> */}
                     <button className="hide-button" onClick={() => {
                         this.props.minimizeMapWindow(map)
 
