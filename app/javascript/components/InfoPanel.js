@@ -4,16 +4,39 @@ import "../../assets/stylesheets/InfoPanel.scss"
 class InfoPanel extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { isExpanded: false }
+        this.state = { 
+            isExpanded: false ,
+            panelInfo: ''}
     }
-    render() {
-        const {  } = this.props;
 
-        let panelInfo = ''
+    async getData() {
+        
+        console.log(`fetching ${this.props.infoName} data from https://www.dnd5eapi.co/api/${this.props.apiTarget}`)
+        let APIData = fetch(`https://www.dnd5eapi.co/api/${this.props.apiTarget}`, {
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }).then(response => response.json())
+          .then(data => {
+              this.setState({
+                panelInfo: data
+              }) 
+          })
+
+    }
+
+    componentDidMount() {
+
+        this.getData()
+
+    }
+
+    render() {
+        const { infoName, apiTarget } = this.props;
         let expandedPanel = <div className="expanded-panel">
 
              PANEL INFO
-            {panelInfo}
+            {/* {this.state.panelInfo} */}
 
         </div>
 
@@ -32,8 +55,10 @@ class InfoPanel extends React.Component {
                         isExpanded: false
                     });
                 }}>
-                   
-                    InfoPanel
+                   <button onClick={() => {
+                       console.log(this.state.panelInfo)
+                   }} />
+                    {infoName}
                     {this.state.isExpanded && expandedPanel}
 
                 </div>
@@ -44,7 +69,7 @@ class InfoPanel extends React.Component {
 }
 
 InfoPanel.propTypes = {
-    // dropdownOptions: PropTypes.array,
-    // arrayName: PropTypes.string
+    infoName: PropTypes.string,
+    apiTarget: PropTypes.string
 };
 export default InfoPanel

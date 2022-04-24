@@ -46,15 +46,10 @@ class Navbar extends React.Component {
 
                     />
                     <InfoPanel 
-
+                        infoName={'Equipment'}
+                        apiTarget={'equipment'}
                     />
-                    {/* <select>
-                        {listCharacters}
-                    </select>
 
-                    <select>
-                        {listMaps}
-                    </select> */}
                 </div>
 
             </React.Fragment>
