@@ -10,3 +10,5 @@ Character backup exporting and importing
 
 React component GameTracker.js allows for live character creation and editing with the rails API
   - map magnification on doubleclick with https://www.npmjs.com/package/react-image-magnifiers
+
+Dungeons and Dragons SRD data is retrieved through the dnd5eapi
