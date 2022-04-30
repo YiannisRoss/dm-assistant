@@ -6,9 +6,7 @@
 <% end %>
 <%= link_to 'Export character data', '/api/v1/characters.export' unless @characters.empty? %>
   
-
 <br>
-
 
 <% if @characters.empty? %>
     <p>You don't have any characters yet.</p> 
@@ -16,7 +14,6 @@
     <div class='characters-container'>
     <% @characters.each do |character|%>
     
-        
     <a class='character-div' href=<%=character_path(character)%> >
         <h2><%= character.name%> </h2>
         <img class='character-img' src="<%=(url_for(character.image)) if character.image.attached?%>"> 
