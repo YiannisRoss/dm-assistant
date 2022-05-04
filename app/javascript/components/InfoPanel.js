@@ -13,7 +13,6 @@ class InfoPanel extends React.Component {
     }
 
     async getData() {
-
         console.log(`fetching ${this.props.infoName} data from https://www.dnd5eapi.co/api/${this.props.apiTarget}`)
         let APIData = fetch(`https://www.dnd5eapi.co/api/${this.props.apiTarget}`, {
             headers: {
@@ -28,19 +27,6 @@ class InfoPanel extends React.Component {
 
     }
 
-    populateListItems() {
-        let listItems
-        if (this.state.panelInfo.results[0]) {
-            const numberOfItemArrays = this.state.panelInfo.results.length
-            for (let i = 0; i < numberOfItemArrays; i++) {
-                listItems = listItems + this.state.panelInfo.results[0].map((item) => <li>{number}</li>);
-            }
-
-            this.state.panelInfo.results[0].map((item) => <li>{number}</li>);
-        }
-        return listItems
-    }
-
     componentDidMount() {
 
         this.getData()
@@ -51,9 +37,6 @@ class InfoPanel extends React.Component {
     render() {
         const { infoName, apiTarget } = this.props;
         let listItems = this.state.panelInfo.results.map((item) => <li>{item.name}</li>);
-
-
-
         let expandedPanel = <div className="expanded-panel">
 
             {listItems}
