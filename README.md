@@ -12,3 +12,16 @@ React component GameTracker.js allows for live character creation and editing wi
   - map magnification on doubleclick with https://www.npmjs.com/package/react-image-magnifiers
 
 Dungeons and Dragons SRD data is retrieved through the dnd5eapi
+
+
+
+# Errors
+
+## Cannot find module 'module-name'
+
+Most likely an npm issue not having updated. Run:
+```
+npm update
+npm install
+```
+
