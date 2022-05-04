@@ -7,6 +7,8 @@
 }
 
 .expanded-panel{
+    overflow: scroll;
+    max-height: 80vh;
     height: fit-content;
     width: 200px;    
     background-color: rgb(51, 51, 51);

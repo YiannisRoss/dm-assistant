@@ -35,8 +35,7 @@ class InfoPanel extends React.Component {
             for (let i = 0; i < numberOfItemArrays; i++) {
                 listItems = listItems + this.state.panelInfo.results[0].map((item) => <li>{number}</li>);
             }
-            console.log('this.state.panelInfo.results:')
-            console.log(this.state.panelInfo.results)
+
             this.state.panelInfo.results[0].map((item) => <li>{number}</li>);
         }
         return listItems
