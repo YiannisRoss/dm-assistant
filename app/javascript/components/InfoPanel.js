@@ -45,13 +45,19 @@ class InfoPanel extends React.Component {
     }
 
     toggleInfoPanel(item) {
-
-        this.getItemData(item)
-        this.setState({
-            selectedItem: item,
-            isItemSelected: true
-        })
-
+        if (this.state.selectedItem == null) {
+            this.getItemData(item)
+            this.setState({
+                selectedItem: item,
+                isItemSelected: true
+            })
+        }
+        else {
+            this.setState({
+                selectedItem: null,
+                isItemSelected: false
+            })
+        }
     }
     componentDidMount() {
 
@@ -77,6 +83,7 @@ class InfoPanel extends React.Component {
             <li>{selectedItemData.name}</li>
             <li>Weight: {selectedItemData.weight}</li>
             <li>{selectedItemData.cost && (selectedItemData.cost.quantity + selectedItemData.cost.unit)}</li>
+            <li className='item-description'>{selectedItemData.desc}</li>
         </ul>
 
         let itemPanel = <div className="expanded-panel item-panel">
@@ -84,7 +91,9 @@ class InfoPanel extends React.Component {
             {selectedItemData != null && (
                 itemProperties)
             }
-
+            <button onClick={() => {
+                this.toggleInfoPanel()
+            }}>X</button>
         </div>
 
 
