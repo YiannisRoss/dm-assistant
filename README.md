@@ -25,3 +25,6 @@ npm update
 npm install
 ```
 
+# Licensing 
+
+The SRD, or Systems Reference Document, contains guidelines for publishing content under the OGL. This allows for some of the data for D&D 5e to be open source. The API only covers data that can be found in the SRD. [Here's a link to the full text of the SRD, as of 5/5/2022.](https://media.wizards.com/2016/downloads/DND/SRD-OGL_V5.1.pdf)
