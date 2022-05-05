@@ -98,12 +98,30 @@ class InfoPanel extends React.Component {
 
         let itemProperties = <ul>
             <li>{selectedItemData.name}</li>
-            <li>Weight: {selectedItemData.weight}</li>
+            <li>Weight: {selectedItemData.weight} lbs</li>
             <li>{selectedItemData.cost && (selectedItemData.cost.quantity + selectedItemData.cost.unit)}</li>
-            <li className='item-description'>{selectedItemData.desc}</li>
+            {selectedItemData.description && <li className='item-description'>{selectedItemData.desc}</li>}
 
             {/* armor */}
             {selectedItemData.equipment_category && selectedItemData.equipment_category.name == 'Armor' && ('AC ' + selectedItemData.armor_class.base)}
+            {/* weapon */}
+            {selectedItemData.equipment_category && selectedItemData.equipment_category.name == 'Weapon' &&
+
+                selectedItemData.properties.map((property => {
+
+                    return ` ${property.name}`
+                })) + (` ${selectedItemData.weapon_category}
+            Damage: ${selectedItemData.damage.damage_dice} ${selectedItemData.damage.damage_type.name}
+                `)}
+            {/* ranged */}
+            {selectedItemData.weapon_range != 'Melee' &&
+                selectedItemData.range && (`${selectedItemData.range.normal}/${selectedItemData.range.long}`)
+            }
+
+            {selectedItemData.two_handed_damage && (`Versatile: ${selectedItemData.two_handed_damage.damage_dice}`)}
+
+
+
         </ul>
 
         let itemPanel = <div className="item-panel">
@@ -114,7 +132,6 @@ class InfoPanel extends React.Component {
                 this.toggleInfoPanel()
             }}>X</button>
         </div>
-
 
         return (
             <React.Fragment>
