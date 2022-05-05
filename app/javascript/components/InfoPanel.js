@@ -88,12 +88,12 @@ class InfoPanel extends React.Component {
         const { infoName, apiTarget } = this.props;
         const { selectedItemData } = this.state;
         let listItems = this.state.panelInfo.results.map((item) =>
-            <li onClick={() => {
+            <li className="item-list-element" onClick={() => {
                 this.toggleInfoPanel(item)
 
             }}>{item.name}</li>);
         let expandedList = <div id="expanded-panel">
-            <input type="text" id='search-input' placeholder="Search.." onChange={() => { this.searchDropdown() }}></input>
+            <input type="text" id='search-input' placeholder="Search..." onChange={() => { this.searchDropdown() }}></input>
             {listItems}
 
         </div >
@@ -122,14 +122,12 @@ class InfoPanel extends React.Component {
         return (
             <React.Fragment>
                 <div className="info-panel" onMouseEnter={() => {
-                    console.log('INFOPANEL mouse enter.')
                     this.setState({
                         isExpanded: true
                     });
 
                 }
                 } onMouseLeave={() => {
-                    console.log('infopanel mouse left')
                     this.setState({
                         isExpanded: false
                     });
