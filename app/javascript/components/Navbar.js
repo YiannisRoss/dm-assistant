@@ -5,6 +5,7 @@ import DropdownExpandable from "./DropdownExpandable";
 import EquipmentPanel from "./EquipmentPanel";
 import SpellsPanel from "./SpellsPanel";
 import ConditionsPanel from "./ConditionsPanel";
+import ClassesPanel from "./ClassesPanel";
 class Navbar extends React.Component {
     constructor(props) {
         super(props);
@@ -50,6 +51,7 @@ class Navbar extends React.Component {
                     <EquipmentPanel />
                     <SpellsPanel />
                     <ConditionsPanel />
+                    <ClassesPanel />
                 </div>
 
             </React.Fragment>
