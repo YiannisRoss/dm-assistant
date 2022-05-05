@@ -42,20 +42,14 @@ class SpellsPanel extends React.Component {
             })
     }
 
-    toggleInfoPanel(item) {
-        if (this.state.selectedItem == null) {
-            this.getItemData(item)
-            this.setState({
-                selectedItem: item,
-                isItemSelected: true
-            })
-        }
-        else {
-            this.setState({
-                selectedItem: null,
-                isItemSelected: false
-            })
-        }
+    showItemInfo(item) {
+
+        this.getItemData(item)
+        this.setState({
+            selectedItem: item,
+            isItemSelected: true
+        })
+
     }
 
     searchDropdown() {
@@ -86,7 +80,7 @@ class SpellsPanel extends React.Component {
         const { selectedItemData } = this.state;
         let listItems = this.state.panelInfo.results.map((item, index) =>
             <li key={index} className="item-list-element" onClick={() => {
-                this.toggleInfoPanel(item)
+                this.showItemInfo(item)
 
             }}>{item.name}</li>);
         let expandedList = <div id="expanded-panel">
@@ -116,7 +110,9 @@ class SpellsPanel extends React.Component {
                 itemProperties)
             }
             <button onClick={() => {
-                this.toggleInfoPanel()
+                this.setState({
+                    isItemSelected: false
+                })
             }}>X</button>
         </div>
 

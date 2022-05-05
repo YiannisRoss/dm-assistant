@@ -42,20 +42,14 @@ class EquipmentPanel extends React.Component {
             })
     }
 
-    toggleInfoPanel(item) {
-        if (this.state.selectedItem == null) {
-            this.getItemData(item)
-            this.setState({
-                selectedItem: item,
-                isItemSelected: true
-            })
-        }
-        else {
-            this.setState({
-                selectedItem: null,
-                isItemSelected: false
-            })
-        }
+    showItemInfo(item) {
+
+        this.getItemData(item)
+        this.setState({
+            selectedItem: item,
+            isItemSelected: true
+        })
+
     }
 
     searchDropdown() {
@@ -86,7 +80,7 @@ class EquipmentPanel extends React.Component {
         const { selectedItemData } = this.state;
         let listItems = this.state.panelInfo.results.map((item, index) =>
             <li key={index} className="item-list-element" onClick={() => {
-                this.toggleInfoPanel(item)
+                this.showItemInfo(item)
 
             }}>{item.name}</li>);
         let expandedList = <div id="expanded-panel">
@@ -99,7 +93,7 @@ class EquipmentPanel extends React.Component {
             <li>{selectedItemData.name}</li>
             <li>Weight: {selectedItemData.weight} lbs</li>
             <li>{selectedItemData.cost && (selectedItemData.cost.quantity + selectedItemData.cost.unit)}</li>
-            {selectedItemData.description && <li className='item-description'>{selectedItemData.desc}</li>}
+            {selectedItemData.desc && <li className='item-description'>{selectedItemData.desc}</li>}
 
             {/* armor */}
             {selectedItemData.equipment_category && selectedItemData.equipment_category.name == 'Armor' && ('AC ' + selectedItemData.armor_class.base)}
@@ -128,7 +122,9 @@ class EquipmentPanel extends React.Component {
                 itemProperties)
             }
             <button onClick={() => {
-                this.toggleInfoPanel()
+                this.setState({
+                    isItemSelected: false
+                })
             }}>X</button>
         </div>
 
