@@ -27,7 +27,6 @@ class InfoPanel extends React.Component {
                     panelInfo: data
                 })
             })
-
     }
 
     async getItemData(item) {
@@ -41,7 +40,6 @@ class InfoPanel extends React.Component {
                     selectedItemData: data
                 })
             })
-
     }
 
     toggleInfoPanel(item) {
@@ -108,8 +106,7 @@ class InfoPanel extends React.Component {
             {selectedItemData.equipment_category && selectedItemData.equipment_category.name == 'Armor' && ('AC ' + selectedItemData.armor_class.base)}
         </ul>
 
-        let itemPanel = <div className="expanded-panel item-panel">
-
+        let itemPanel = <div className="item-panel">
             {selectedItemData != null && (
                 itemProperties)
             }
@@ -133,18 +130,9 @@ class InfoPanel extends React.Component {
                     });
                 }}>
                     <button onClick={() => {
-                        console.log(this.state.panelInfo)
-                        console.log('results:  ')
-                        console.log(this.state.panelInfo.results)
-                        console.log('results length: ')
-                        console.log(this.state.panelInfo.results.length)
-                        console.log('result number 0:')
-                        console.log(this.state.panelInfo.results[0])
-                        console.log('list items :')
-                        console.log(listItems)
-                        console.log('selected item data:')
+
                         console.log(this.state.selectedItemData)
-                        console.log('cost:' + selectedItemData.cost.quantity)
+
                     }} />
                     {infoName}
                     {this.state.isItemSelected && itemPanel}
