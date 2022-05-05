@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import "../../assets/stylesheets/Navbar.scss"
 import DropdownExpandable from "./DropdownExpandable";
 import EquipmentPanel from "./EquipmentPanel";
+import SpellsPanel from "./SpellsPanel";
 class Navbar extends React.Component {
     constructor(props) {
         super(props);
@@ -45,10 +46,8 @@ class Navbar extends React.Component {
                         createDefaultOption={createDefaultCharacter} //switch to map
 
                     />
-                    <EquipmentPanel
-
-                    />
-
+                    <EquipmentPanel />
+                    <SpellsPanel />
                 </div>
 
             </React.Fragment>
