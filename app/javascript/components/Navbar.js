@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import "../../assets/stylesheets/Navbar.scss"
 import DropdownExpandable from "./DropdownExpandable";
-import InfoPanel from "./InfoPanel"
+import EquipmentPanel from "./EquipmentPanel";
 class Navbar extends React.Component {
     constructor(props) {
         super(props);
@@ -45,9 +45,8 @@ class Navbar extends React.Component {
                         createDefaultOption={createDefaultCharacter} //switch to map
 
                     />
-                    <InfoPanel 
-                        infoName={'Equipment'}
-                        apiTarget={'equipment'}
+                    <EquipmentPanel
+
                     />
 
                 </div>

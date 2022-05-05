@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import "../../assets/stylesheets/InfoPanel.scss"
-class InfoPanel extends React.Component {
+import "../../assets/stylesheets/EquipmentPanel.scss"
+class EquipmentPanel extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,8 +16,8 @@ class InfoPanel extends React.Component {
     }
 
     async getData() {
-        console.log(`fetching ${this.props.infoName} data from https://www.dnd5eapi.co/api/${this.props.apiTarget}`)
-        let APIData = fetch(`https://www.dnd5eapi.co/api/${this.props.apiTarget}`, {
+        console.log(`fetching equipment data from https://www.dnd5eapi.co/api/equipment`)
+        let APIData = fetch(`https://www.dnd5eapi.co/api/equipment`, {
             headers: {
                 'Content-Type': 'application/json',
             }
@@ -83,7 +83,6 @@ class InfoPanel extends React.Component {
     }
 
     render() {
-        const { infoName, apiTarget } = this.props;
         const { selectedItemData } = this.state;
         let listItems = this.state.panelInfo.results.map((item) =>
             <li className="item-list-element" onClick={() => {
@@ -151,7 +150,7 @@ class InfoPanel extends React.Component {
                         console.log(this.state.selectedItemData)
 
                     }} />
-                    {infoName}
+                    Equipment
                     {this.state.isItemSelected && itemPanel}
                     {this.state.isExpanded && expandedList}
 
@@ -162,8 +161,5 @@ class InfoPanel extends React.Component {
     }
 }
 
-InfoPanel.propTypes = {
-    infoName: PropTypes.string,
-    apiTarget: PropTypes.string
-};
-export default InfoPanel
+
+export default EquipmentPanel
