@@ -59,6 +59,25 @@ class InfoPanel extends React.Component {
             })
         }
     }
+
+    searchDropdown() {
+        let input = document.getElementById("search-input");
+
+        if (input) {
+            let filter = input.value.toUpperCase();
+            let div = document.getElementById("expanded-panel");
+            let li = div.getElementsByTagName("li");
+            for (let i = 0; i < li.length; i++) {
+                let txtValue = li[i].textContent || li[i].innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+        }
+    }
+
     componentDidMount() {
 
         this.getData()
@@ -73,17 +92,20 @@ class InfoPanel extends React.Component {
                 this.toggleInfoPanel(item)
 
             }}>{item.name}</li>);
-        let expandedList = <div className="expanded-panel">
-
+        let expandedList = <div id="expanded-panel">
+            <input type="text" id='search-input' placeholder="Search.." onChange={() => { this.searchDropdown() }}></input>
             {listItems}
 
-        </div>
+        </div >
 
         let itemProperties = <ul>
             <li>{selectedItemData.name}</li>
             <li>Weight: {selectedItemData.weight}</li>
             <li>{selectedItemData.cost && (selectedItemData.cost.quantity + selectedItemData.cost.unit)}</li>
             <li className='item-description'>{selectedItemData.desc}</li>
+
+            {/* armor */}
+            {selectedItemData.equipment_category && selectedItemData.equipment_category.name == 'Armor' && ('AC ' + selectedItemData.armor_class.base)}
         </ul>
 
         let itemPanel = <div className="expanded-panel item-panel">
