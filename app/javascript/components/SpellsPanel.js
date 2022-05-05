@@ -97,11 +97,15 @@ class SpellsPanel extends React.Component {
 
         let itemProperties = <ul>
             <li>{selectedItemData.name} ({selectedItemData.school && selectedItemData.school.name})</li>
-            <li>{selectedItemData.range} {selectedItemData.components} ({(selectedItemData.components && selectedItemData.components.indexOf("V") > -1) && selectedItemData.material})</li>
+            <li>{selectedItemData.range} {selectedItemData.components} ({(selectedItemData.components && selectedItemData.components.indexOf("V") > -1)
+                && selectedItemData.material})</li>
             <li>{selectedItemData.casting_time}{selectedItemData.ritual && ', ritual'}</li>
             <li>{selectedItemData.duration}{selectedItemData.concentration && ', concentration'}</li>
             <li className='item-description'>{selectedItemData.desc}</li>
             <li>{selectedItemData.higher_level}</li>
+            <li>{selectedItemData.classes && selectedItemData.classes.map((characterClass => {
+                return `${characterClass.name} `
+            }))}</li>
 
 
 
