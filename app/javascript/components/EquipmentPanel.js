@@ -84,8 +84,8 @@ class EquipmentPanel extends React.Component {
 
     render() {
         const { selectedItemData } = this.state;
-        let listItems = this.state.panelInfo.results.map((item) =>
-            <li className="item-list-element" onClick={() => {
+        let listItems = this.state.panelInfo.results.map((item, index) =>
+            <li key={index} className="item-list-element" onClick={() => {
                 this.toggleInfoPanel(item)
 
             }}>{item.name}</li>);

@@ -20,13 +20,12 @@ class DropdownExpandable extends React.Component {
                 createWindow(option)
             }}> {option.name || option.title} </option >
         )
-        const additionOption = <option onClick={() => {
-           arrayName == 'Characters' ? createDefaultOption() : window.open("/maps/new", "_blank")
-        }}> Add {arrayName} </option >
 
-        dropdownOptionsList.push(additionOption)
 
         let dropdownPopup = <div className="dropdown-popup">
+            <option onClick={() => {
+                arrayName == 'Characters' ? createDefaultOption() : window.open("/maps/new", "_blank")
+            }}> Add {arrayName} </option >
             {dropdownOptionsList}
 
         </div>
