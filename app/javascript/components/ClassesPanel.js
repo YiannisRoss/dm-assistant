@@ -7,10 +7,12 @@ class ClassesPanel extends React.Component {
         this.state = {
             isExpanded: false,
             isItemSelected: false,
+            isFeatureSelected: false,
             characterClasses: [],
             selectedItem: null,
             selectedItemData: {},
             selectedClassFeatures: {},
+            selectedFeature: null
 
         }
     }
@@ -56,15 +58,16 @@ class ClassesPanel extends React.Component {
 
     }
 
-    async getFeatureData(index) {
-        let APIData = fetch(`https://www.dnd5eapi.co/api/classes/${this.state.selectedItemData.index}/features/${index}`, {
+    async getFeatureData(url) {
+        console.log('getting feature data from:' + `https://www.dnd5eapi.co${url}`)
+        let APIData = fetch(`https://www.dnd5eapi.co${url}`, {
             headers: {
                 'Content-Type': 'application/json',
             }
         }).then(response => response.json())
             .then(data => {
                 this.setState({
-                    selectedClassFeatures: data.results
+                    selectedFeature: data
                 })
             })
     }
@@ -80,7 +83,9 @@ class ClassesPanel extends React.Component {
     }
 
     expandFeature(feature) {
-
+        this.setState({
+            isFeatureSelected: true
+        })
 
     }
 
@@ -109,7 +114,7 @@ class ClassesPanel extends React.Component {
 
             {Object.keys(this.state.selectedClassFeatures).length > 0 && (this.state.selectedClassFeatures.map((feature, index) =>
                 <li key={index} onClick={() => {
-                    this.getFeatureData(feature.index)
+                    this.getFeatureData(feature.url)
                     this.expandFeature(feature)
                 }}> {feature.name} </li>))
 
@@ -124,6 +129,17 @@ class ClassesPanel extends React.Component {
             <button onClick={() => {
                 this.setState({
                     isItemSelected: false
+                })
+            }}>X</button>
+        </div>
+
+        let featurePanel = <div >
+            {this.state.selectedFeature != null && (
+                <li>{this.state.selectedFeature.desc}</li>)
+            }
+            <button onClick={() => {
+                this.setState({
+                    isFeatureSelected: false
                 })
             }}>X</button>
         </div>
@@ -145,11 +161,13 @@ class ClassesPanel extends React.Component {
                         console.log(this.state.characterClasses)
                         console.log(this.state.selectedItemData)
                         console.log(this.state.selectedClassFeatures)
-
+                        console.log(this.state.selectedFeature)
                     }} />
                     Classes
+                    {this.state.isFeatureSelected && featurePanel}
                     {this.state.isItemSelected && itemPanel}
                     {this.state.isExpanded && expandedList}
+
 
                 </div>
 
