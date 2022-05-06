@@ -1,6 +1,6 @@
 # dm-assistant
 
-A Ruby on Rails app that assists DMs with character and map tracking. Made with Dungeons and Dragons in mind, but potentially works for other systems as well.
+A Ruby on Rails app that assists DMs with character and map tracking. Made with Dungeons and Dragons in mind, but potentially works for other systems as well. Hosted [here on Heroku](https://fierce-wave-86598.herokuapp.com/)
 
 Username/email login
 
