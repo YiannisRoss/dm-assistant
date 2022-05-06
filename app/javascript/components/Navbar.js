@@ -28,7 +28,7 @@ class Navbar extends React.Component {
                         dropdownOptions={this.props.maps}
                         arrayName={'Maps'}
                         createWindow={createMapWindow}
-                        createDefaultOption={createDefaultCharacter} //switch to map
+                        createDefaultOption={() => { window.open("/maps/new", "_blank") }}
 
                     />
                     <EquipmentPanel />
