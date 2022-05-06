@@ -7,12 +7,11 @@ class ClassesPanel extends React.Component {
         this.state = {
             isExpanded: false,
             isItemSelected: false,
+            characterClasses: [],
             selectedItem: null,
             selectedItemData: {},
             selectedClassFeatures: {},
-            panelInfo: {
-                results: []
-            }
+
         }
     }
 
@@ -25,7 +24,7 @@ class ClassesPanel extends React.Component {
         }).then(response => response.json())
             .then(data => {
                 this.setState({
-                    panelInfo: data
+                    characterClasses: data.results
                 })
             })
     }
@@ -80,6 +79,10 @@ class ClassesPanel extends React.Component {
 
     }
 
+    expandFeature(feature) {
+
+
+    }
 
     componentDidMount() {
 
@@ -89,11 +92,11 @@ class ClassesPanel extends React.Component {
 
     render() {
         const { selectedItemData } = this.state;
-        let listItems = this.state.panelInfo.results.map((item, index) =>
+        let listItems = this.state.characterClasses.length > 0 && this.state.characterClasses.map((characterClass, index) =>
             <li key={index} className="item-list-element" onClick={() => {
-                this.showItemInfo(item)
+                this.showItemInfo(characterClass)
 
-            }}>{item.name}</li>);
+            }}>{characterClass.name}</li>);
         let expandedList = <div id="expanded-panel">
 
             {listItems}
@@ -107,6 +110,7 @@ class ClassesPanel extends React.Component {
             {Object.keys(this.state.selectedClassFeatures).length > 0 && (this.state.selectedClassFeatures.map((feature, index) =>
                 <li key={index} onClick={() => {
                     this.getFeatureData(feature.index)
+                    this.expandFeature(feature)
                 }}> {feature.name} </li>))
 
             }
@@ -138,7 +142,7 @@ class ClassesPanel extends React.Component {
                     });
                 }}>
                     <button onClick={() => {
-
+                        console.log(this.state.characterClasses)
                         console.log(this.state.selectedItemData)
                         console.log(this.state.selectedClassFeatures)
 
