@@ -57,7 +57,7 @@ class EquipmentPanel extends React.Component {
 
         if (input) {
             let filter = input.value.toUpperCase();
-            let div = document.getElementById("expanded-panel");
+            let div = document.getElementsByClassName("expanded-panel")[0];
             let li = div.getElementsByTagName("li");
             for (let i = 0; i < li.length; i++) {
                 let txtValue = li[i].textContent || li[i].innerText;
@@ -83,7 +83,7 @@ class EquipmentPanel extends React.Component {
                 this.showItemInfo(item)
 
             }}>{item.name}</li>);
-        let expandedList = <div id="expanded-panel" className="dropdown-popup">
+        let expandedList = <div className="dropdown-popup expanded-panel">
             <input type="text" id='search-input' placeholder="Search..." onChange={() => { this.searchDropdown() }}></input>
             {listItems}
 

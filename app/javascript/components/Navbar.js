@@ -17,7 +17,6 @@ class Navbar extends React.Component {
         return (
             <React.Fragment>
                 <div id='navbar-container'>
-
                     <DropdownExpandable
                         dropdownOptions={this.props.characters}
                         arrayName={'Characters'}
@@ -29,7 +28,6 @@ class Navbar extends React.Component {
                         arrayName={'Maps'}
                         createWindow={createMapWindow}
                         createDefaultOption={() => { window.open("/maps/new", "_blank") }}
-
                     />
                     <EquipmentPanel />
                     <SpellsPanel />

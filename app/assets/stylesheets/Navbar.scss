@@ -5,11 +5,15 @@
     padding-top: 1%;
     display: flex;
 
+    //for all navbar elements (dropdowns) to not be supercede main page containers 
+    position: relative;
+    z-index: 1;
 }
 
 .navbar-panel {
     width: 100%;
 }
+
 
 .dropdown {
     background-color: gray;
@@ -23,9 +27,25 @@
     width: 200px;    
     background-color: rgb(51, 51, 51);
     position: relative;
+    z-index: 2;
+}
+
+.expanded-panel{
+    overflow: scroll;
+    scroll-behavior: smooth;
+    max-height: 80vh;
+    
+    height: fit-content;
+    width: 200px;    
+    background-color: rgb(51, 51, 51);
+    position: relative;
     z-index: 1;
 }
 
 option:hover {
+    background-color: rgb(121, 121, 121); ;
+}
+
+li:hover {
     background-color: rgb(121, 121, 121); ;
 }

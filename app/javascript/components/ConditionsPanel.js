@@ -66,7 +66,7 @@ class ConditionsPanel extends React.Component {
                 this.showItemInfo(item)
 
             }}>{item.name}</li>);
-        let expandedList = <div id="expanded-panel" className="dropdown-popup">
+        let expandedList = <div className="dropdown-popup expanded-panel">
 
             {listItems}
 

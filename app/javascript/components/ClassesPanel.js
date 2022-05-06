@@ -102,7 +102,7 @@ class ClassesPanel extends React.Component {
                 this.showItemInfo(characterClass)
 
             }}>{characterClass.name}</li>);
-        let expandedList = <div id="expanded-panel" className="dropdown-popup">
+        let expandedList = <div className="dropdown-popup expanded-panel">
 
             {listItems}
 
@@ -167,7 +167,6 @@ class ClassesPanel extends React.Component {
                     {this.state.isFeatureSelected && featurePanel}
                     {this.state.isItemSelected && itemPanel}
                     {this.state.isExpanded && expandedList}
-
 
                 </div>
 
