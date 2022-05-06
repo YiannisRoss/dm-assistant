@@ -3,7 +3,7 @@
 class GameTrackerController < ApplicationController
   layout 'game_tracker'
   def index
-    @characters = Character.all
+    @characters = Character.all.where(user_id: current_user.id)
     @characters_with_img_URL = []
     @characters.each do |character|
       character_data = {
@@ -19,6 +19,6 @@ class GameTrackerController < ApplicationController
       @characters_with_img_URL.push(character_data)
     end
 
-    @maps = Map.all
+    @maps = Map.all.where(user_id: current_user.id)
   end
 end
