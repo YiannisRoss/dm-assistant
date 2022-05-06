@@ -51,10 +51,23 @@ class ClassesPanel extends React.Component {
         }).then(response => response.json())
             .then(data => {
                 this.setState({
-                    selectedClassFeatures: data
+                    selectedClassFeatures: data.results
                 })
             })
 
+    }
+
+    async getFeatureData(index) {
+        let APIData = fetch(`https://www.dnd5eapi.co/api/classes/${this.state.selectedItemData.index}/features/${index}`, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(response => response.json())
+            .then(data => {
+                this.setState({
+                    selectedClassFeatures: data.results
+                })
+            })
     }
     showItemInfo(item) {
 
@@ -90,6 +103,13 @@ class ClassesPanel extends React.Component {
         let itemProperties = <ul>
             <li>{selectedItemData.name} </li>
             <li>HD: {selectedItemData.hit_die} </li>
+
+            {Object.keys(this.state.selectedClassFeatures).length > 0 && (this.state.selectedClassFeatures.map((feature, index) =>
+                <li key={index} onClick={() => {
+                    this.getFeatureData(feature.index)
+                }}> {feature.name} </li>))
+
+            }
 
         </ul>
 
