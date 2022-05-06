@@ -9,6 +9,7 @@ class ClassesPanel extends React.Component {
             isItemSelected: false,
             selectedItem: null,
             selectedItemData: {},
+            selectedClassFeatures: {},
             panelInfo: {
                 results: []
             }
@@ -39,12 +40,26 @@ class ClassesPanel extends React.Component {
                 this.setState({
                     selectedItemData: data
                 })
-            })
+            }).then(date => { this.getClassFeatures() })
     }
 
+    async getClassFeatures() {
+        let APIData = fetch(`https://www.dnd5eapi.co/api/classes/${this.state.selectedItemData.index}/features`, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then(response => response.json())
+            .then(data => {
+                this.setState({
+                    selectedClassFeatures: data
+                })
+            })
+
+    }
     showItemInfo(item) {
 
         this.getItemData(item)
+
         this.setState({
             selectedItem: item,
             isItemSelected: true
@@ -105,6 +120,7 @@ class ClassesPanel extends React.Component {
                     <button onClick={() => {
 
                         console.log(this.state.selectedItemData)
+                        console.log(this.state.selectedClassFeatures)
 
                     }} />
                     Classes
