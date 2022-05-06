@@ -8,6 +8,7 @@
 
 #expanded-panel{
     overflow: scroll;
+    scroll-behavior: smooth;
     max-height: 80vh;
     
     height: fit-content;

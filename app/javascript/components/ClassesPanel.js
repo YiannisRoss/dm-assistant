@@ -102,7 +102,7 @@ class ClassesPanel extends React.Component {
                 this.showItemInfo(characterClass)
 
             }}>{characterClass.name}</li>);
-        let expandedList = <div id="expanded-panel">
+        let expandedList = <div id="expanded-panel" className="dropdown-popup">
 
             {listItems}
 
@@ -146,7 +146,7 @@ class ClassesPanel extends React.Component {
 
         return (
             <React.Fragment>
-                <div className="info-panel" onMouseEnter={() => {
+                <div className="dropdown" onMouseEnter={() => {
                     this.setState({
                         isExpanded: true
                     });

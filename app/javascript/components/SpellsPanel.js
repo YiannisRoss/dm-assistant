@@ -83,7 +83,7 @@ class SpellsPanel extends React.Component {
                 this.showItemInfo(item)
 
             }}>{item.name}</li>);
-        let expandedList = <div id="expanded-panel">
+        let expandedList = <div id="expanded-panel" className="dropdown-popup">
             <input type="text" id='search-input' placeholder="Search..." onChange={() => { this.searchDropdown() }}></input>
             {listItems}
 
@@ -118,7 +118,7 @@ class SpellsPanel extends React.Component {
 
         return (
             <React.Fragment>
-                <div className="info-panel" onMouseEnter={() => {
+                <div className="dropdown" onMouseEnter={() => {
                     this.setState({
                         isExpanded: true
                     });
