@@ -1,6 +1,6 @@
 class Api::V1::CharactersController < Api::V1::BaseController
   def index
-    characters = Character.all
+    characters = Character.all.where(user_id: current_user.id)
     characters_with_img_URL = []
     characters.each do |character|
       character_data = {
