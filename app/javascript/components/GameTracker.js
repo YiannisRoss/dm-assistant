@@ -144,7 +144,6 @@ class GameTracker extends React.Component {
             {this.state.characterWindowsList}
           </div>
 
-
         </div>
       </React.Fragment>
     );
