@@ -16,6 +16,10 @@ class GameTracker extends React.Component {
       pinnedPanels: []
     };
 
+    this.pinnedPanelsRef = React.createRef();
+    this.pinPanel = this.pinPanel.bind(this);
+
+
     this.minimizeCharacterWindow = this.minimizeCharacterWindow.bind(this);
     this.minimizeMapWindow = this.minimizeMapWindow.bind(this);
     this.createDefaultCharacter = this.createDefaultCharacter.bind(this);
@@ -130,7 +134,17 @@ class GameTracker extends React.Component {
 
   pinPanel(panel) {
 
-    console.log(panel)
+    let newPanel = <div>{panel.current.textContent}</div>
+    let newPinnedPanels = this.state.pinnedPanels
+    newPinnedPanels.push(newPanel)
+    console.log('updating pinnedPanels state')
+    console.log(newPanel)
+    console.log(newPinnedPanels)
+    this.setState({
+      pinnedPanels: newPinnedPanels
+    })
+    console.log('state now:')
+    console.log(this.state.pinnedPanels)
   }
 
   render() {
@@ -142,6 +156,7 @@ class GameTracker extends React.Component {
             createCharacterWindow={this.createCharacterWindow}
             createMapWindow={this.createMapWindow}
             createDefaultCharacter={this.createDefaultCharacter}
+            pinPanel={this.pinPanel}
           />
           <div id='tracker-contents'>
             <div id='windows-container'>
@@ -152,7 +167,9 @@ class GameTracker extends React.Component {
                 {this.state.characterWindowsList}
               </div>
             </div>
-            <div id='pinned-panels-container'>pinned spanels</div>
+            <div id='pinned-panels-container' ref={this.pinnedPanelsRef} > {this.state.pinnedPanels.length > 0 &&
+              this.state.pinnedPanels.map((panel => <li key={this.state.pinnedPanels.indexOf(panel)}> {panel}</li>))}
+            </div>
           </div>
         </div>
       </React.Fragment>
