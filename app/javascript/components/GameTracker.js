@@ -12,7 +12,8 @@ class GameTracker extends React.Component {
     this.state = {
       characters: this.props.characters,
       characterWindowsList: [],
-      mapWindowsList: []
+      mapWindowsList: [],
+      pinnedPanels: []
     };
 
     this.minimizeCharacterWindow = this.minimizeCharacterWindow.bind(this);
@@ -57,6 +58,7 @@ class GameTracker extends React.Component {
       .then(response => this.getCharacters())
 
   }
+
   createCharacterWindow(character) {
     if (character.isActivated) {
       console.log(`${character.name} has already been selected`)
@@ -126,6 +128,11 @@ class GameTracker extends React.Component {
     }
   }
 
+  pinPanel(panel) {
+
+    console.log(panel)
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -136,14 +143,17 @@ class GameTracker extends React.Component {
             createMapWindow={this.createMapWindow}
             createDefaultCharacter={this.createDefaultCharacter}
           />
-
-          <div id="map-windows-list-container">
-            {this.state.mapWindowsList}
+          <div id='tracker-contents'>
+            <div id='windows-container'>
+              <div id="map-windows-list-container">
+                {this.state.mapWindowsList}
+              </div>
+              <div id="character-windows-list-container">
+                {this.state.characterWindowsList}
+              </div>
+            </div>
+            <div id='pinned-panels-container'>pinned spanels</div>
           </div>
-          <div id="character-windows-list-container">
-            {this.state.characterWindowsList}
-          </div>
-
         </div>
       </React.Fragment>
     );
