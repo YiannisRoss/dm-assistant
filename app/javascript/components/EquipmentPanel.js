@@ -129,9 +129,10 @@ class EquipmentPanel extends React.Component {
                     isItemSelected: false
                 })
             }}>X</button>
+            <button onClick={() => { this.props.pinPanel(this.itemPanelRef) }}>pin</button>
         </div>
 
-        let pinPanelButton = <button onClick={() => { this.props.pinPanel(this.itemPanelRef) }}>pin me</button>
+
 
         return (
             <React.Fragment>
@@ -153,7 +154,7 @@ class EquipmentPanel extends React.Component {
                     }} />
                     Equipment
                     {this.state.isItemSelected && itemPanel}
-                    {this.state.isItemSelected && pinPanelButton}
+
                     {this.state.isExpanded && expandedList}
 
                 </div>

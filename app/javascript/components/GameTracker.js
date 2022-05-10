@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import Navbar from "./Navbar";
 import CharacterWindow from "./CharacterWindow";
 import MapWindow from "./MapWindow.js";
+import PinnedPanels from "./PinnedPanels";
 
 
 
@@ -133,9 +134,12 @@ class GameTracker extends React.Component {
   }
 
   pinPanel(panel) {
-
-    let newPanel = <div>{panel.current.textContent}</div>
+    console.log(panel)
+    console.log('cloning panel...')
+    let newPanel = panel.current.cloneNode(true)
     let newPinnedPanels = this.state.pinnedPanels
+    console.log('newpanel, jsonStringified:')
+    console.log(JSON.stringify(newPanel))
     newPinnedPanels.push(newPanel)
     console.log('updating pinnedPanels state')
     console.log(newPanel)
@@ -167,9 +171,11 @@ class GameTracker extends React.Component {
                 {this.state.characterWindowsList}
               </div>
             </div>
-            <div id='pinned-panels-container' ref={this.pinnedPanelsRef} > {this.state.pinnedPanels.length > 0 &&
+            {/* <div id='pinned-panels-container' ref={this.pinnedPanelsRef} > {this.state.pinnedPanels.length > 0 &&
               this.state.pinnedPanels.map((panel => <li key={this.state.pinnedPanels.indexOf(panel)}> {panel}</li>))}
-            </div>
+              {/*  this.state.pinnedPanels} 
+            </div> */}
+            <PinnedPanels panels={this.state.pinnedPanels} />
           </div>
         </div>
       </React.Fragment>
