@@ -13,6 +13,9 @@ class SpellsPanel extends React.Component {
                 results: []
             }
         }
+
+        this.itemPanelRef = React.createRef()
+
     }
 
     async getData() {
@@ -105,10 +108,15 @@ class SpellsPanel extends React.Component {
 
         </ul>
 
-        let itemPanel = <div className="item-panel">
+        let itemPanel = <div className="item-panel" ref={this.itemPanelRef}>
             {selectedItemData != null && (
                 itemProperties)
             }
+
+
+            <button onClick={() => {
+                this.props.togglePinPanel(this.itemPanelRef)
+            }}>pin</button>
             <button onClick={() => {
                 this.setState({
                     isItemSelected: false

@@ -12,7 +12,7 @@ class Navbar extends React.Component {
     }
 
     render() {
-        const { createMapWindow, createCharacterWindow, createDefaultCharacter } = this.props;
+        const { createMapWindow, createCharacterWindow, createDefaultCharacter, togglePinPanel } = this.props;
 
         return (
             <React.Fragment>
@@ -29,10 +29,11 @@ class Navbar extends React.Component {
                         createWindow={createMapWindow}
                         createDefaultOption={() => { window.open("/maps/new", "_blank") }}
                     />
-                    <EquipmentPanel />
-                    <SpellsPanel />
-                    <ConditionsPanel />
-                    <ClassesPanel />
+                    <EquipmentPanel
+                        togglePinPanel={togglePinPanel} />
+                    <SpellsPanel togglePinPanel={togglePinPanel} />
+                    <ConditionsPanel togglePinPanel={togglePinPanel} />
+                    <ClassesPanel togglePinPanel={togglePinPanel} />
                 </div>
 
             </React.Fragment>

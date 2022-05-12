@@ -13,6 +13,8 @@ class EquipmentPanel extends React.Component {
                 results: []
             }
         }
+
+        this.itemPanelRef = React.createRef()
     }
 
     async getData() {
@@ -117,16 +119,22 @@ class EquipmentPanel extends React.Component {
 
         </ul>
 
-        let itemPanel = <div className="item-panel">
+        let itemPanel = <div className="item-panel" ref={this.itemPanelRef}>
             {selectedItemData != null && (
                 itemProperties)
             }
+
+
+            <button onClick={() => {
+                this.props.togglePinPanel(this.itemPanelRef)
+            }}>pin</button>
             <button onClick={() => {
                 this.setState({
                     isItemSelected: false
                 })
             }}>X</button>
         </div>
+
 
         return (
             <React.Fragment>
@@ -148,6 +156,7 @@ class EquipmentPanel extends React.Component {
                     }} />
                     Equipment
                     {this.state.isItemSelected && itemPanel}
+
                     {this.state.isExpanded && expandedList}
 
                 </div>
