@@ -158,7 +158,12 @@ class GameTracker extends React.Component {
     }
   }
 
+  resetPins() {
 
+
+    this.pinnedPanelsRef.current.innerHTML = ''
+
+  }
 
   render() {
 
@@ -184,12 +189,16 @@ class GameTracker extends React.Component {
               </div>
             </div>
 
-            <div id='pinned-panels-container' ref={this.pinnedPanelsRef}>
+            <div id='pinned-panels-container' >
+              <button onClick={() => { this.resetPins() }}>Clear pins</button>
               <h2>Pinned Panels</h2>
+              <div id='pinned-panels' ref={this.pinnedPanelsRef}></div>
+
               {/* {
                 this.state.pinnedPanels} */}
 
             </div>
+
 
 
           </div>
