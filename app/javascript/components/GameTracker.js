@@ -133,17 +133,28 @@ class GameTracker extends React.Component {
   togglePinPanel(panel) {
     console.log(panel)
     console.log('cloning panel...')
+    // let unpinButton = <button onClick={() => togglePinPanel(panel)}>Unpin</button>
+    // let newPanel = React.cloneElement(panel.current, [{ togglePinPanel=this.togglePinPanel(panel) }], [unpinButton])
+    console.log(newPanel)
 
     let newPanel = panel.current.cloneNode(true)
 
-    if (this.pinnedPanelsRef.current.innerHTML.includes(newPanel.children[0].innerHTML)) {
+    newPanel.removeChild(newPanel.children[newPanel.children.length - 1])
+    newPanel.removeChild(newPanel.children[newPanel.children.length - 1])
+
+    if (this.pinnedPanelsRef.current.innerHTML.includes(newPanel.innerHTML)) {
       console.log('replacing')
-      this.pinnedPanelsRef.current.innerHTML = this.pinnedPanelsRef.current.innerHTML.replace(newPanel.children[0].innerHTML, "")
+      this.pinnedPanelsRef.current.innerHTML = this.pinnedPanelsRef.current.innerHTML.replace(newPanel.innerHTML, "")
 
     }
     else {
+      console.log(newPanel)
+
       console.log('adding')
-      this.pinnedPanelsRef.current.innerHTML += newPanel.children[0].innerHTML
+      this.pinnedPanelsRef.current.innerHTML += newPanel.innerHTML
+      // console.log('unpin button')
+      // console.log(unpinButton)
+      // this.pinnedPanelsRef.current.innerHTML += unpinButton
     }
   }
 
