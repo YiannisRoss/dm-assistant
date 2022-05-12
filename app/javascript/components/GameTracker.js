@@ -3,9 +3,6 @@ import PropTypes from "prop-types"
 import Navbar from "./Navbar";
 import CharacterWindow from "./CharacterWindow";
 import MapWindow from "./MapWindow.js";
-import PinnedPanels from "./PinnedPanels";
-
-
 
 class GameTracker extends React.Component {
   constructor(props) {
@@ -136,22 +133,26 @@ class GameTracker extends React.Component {
   pinPanel(panel) {
     console.log(panel)
     console.log('cloning panel...')
+
     let newPanel = panel.current.cloneNode(true)
-    let newPinnedPanels = this.state.pinnedPanels
-    console.log('newpanel, jsonStringified:')
-    console.log(JSON.stringify(newPanel))
-    newPinnedPanels.push(newPanel)
-    console.log('updating pinnedPanels state')
-    console.log(newPanel)
-    console.log(newPinnedPanels)
-    this.setState({
-      pinnedPanels: newPinnedPanels
-    })
-    console.log('state now:')
-    console.log(this.state.pinnedPanels)
+
+    if (this.pinnedPanelsRef.current.innerHTML.includes(newPanel.children[0].innerHTML)) {
+      console.log('replacing')
+      this.pinnedPanelsRef.current.innerHTML = this.pinnedPanelsRef.current.innerHTML.replace(newPanel.children[0].innerHTML, "")
+
+    }
+    else {
+      console.log('adding')
+      this.pinnedPanelsRef.current.innerHTML += newPanel.children[0].innerHTML
+    }
   }
 
+
+
   render() {
+
+
+
     return (
       <React.Fragment>
         <div id='container'>
@@ -171,11 +172,15 @@ class GameTracker extends React.Component {
                 {this.state.characterWindowsList}
               </div>
             </div>
-            {/* <div id='pinned-panels-container' ref={this.pinnedPanelsRef} > {this.state.pinnedPanels.length > 0 &&
-              this.state.pinnedPanels.map((panel => <li key={this.state.pinnedPanels.indexOf(panel)}> {panel}</li>))}
-              {/*  this.state.pinnedPanels} 
-            </div> */}
-            <PinnedPanels panels={this.state.pinnedPanels} />
+
+            <div id='pinned-panels-container' ref={this.pinnedPanelsRef}>
+              <h2>Pinned Panels</h2>
+              {/* {
+                this.state.pinnedPanels} */}
+
+            </div>
+
+
           </div>
         </div>
       </React.Fragment>

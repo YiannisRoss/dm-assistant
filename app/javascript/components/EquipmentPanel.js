@@ -130,8 +130,8 @@ class EquipmentPanel extends React.Component {
                 })
             }}>X</button>
             <button onClick={() => { this.props.pinPanel(this.itemPanelRef) }}>pin</button>
-        </div>
 
+        </div>
 
 
         return (
