@@ -21,8 +21,9 @@
     position: absolute;
     right: 0px;
     height: 80vh;
-    width: fit-content;
-
+    width: min-content;
+    color: #000;
+    overflow: scroll;
 }
 
 

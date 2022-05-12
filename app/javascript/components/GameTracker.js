@@ -4,8 +4,6 @@ import Navbar from "./Navbar";
 import CharacterWindow from "./CharacterWindow";
 import MapWindow from "./MapWindow.js";
 
-
-
 class GameTracker extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +13,10 @@ class GameTracker extends React.Component {
       mapWindowsList: [],
       pinnedPanels: []
     };
+
+    this.pinnedPanelsRef = React.createRef();
+    this.togglePinPanel = this.togglePinPanel.bind(this);
+
 
     this.minimizeCharacterWindow = this.minimizeCharacterWindow.bind(this);
     this.minimizeMapWindow = this.minimizeMapWindow.bind(this);
@@ -128,12 +130,45 @@ class GameTracker extends React.Component {
     }
   }
 
-  pinPanel(panel) {
-
+  togglePinPanel(panel) {
     console.log(panel)
+    console.log('cloning panel...')
+    // let unpinButton = <button onClick={() => togglePinPanel(panel)}>Unpin</button>
+    // let newPanel = React.cloneElement(panel.current, [{ togglePinPanel=this.togglePinPanel(panel) }], [unpinButton])
+    console.log(newPanel)
+
+    let newPanel = panel.current.cloneNode(true)
+
+    newPanel.removeChild(newPanel.children[newPanel.children.length - 1])
+    newPanel.removeChild(newPanel.children[newPanel.children.length - 1])
+
+    if (this.pinnedPanelsRef.current.innerHTML.includes(newPanel.innerHTML)) {
+      console.log('replacing')
+      this.pinnedPanelsRef.current.innerHTML = this.pinnedPanelsRef.current.innerHTML.replace(newPanel.innerHTML, "")
+
+    }
+    else {
+      console.log(newPanel)
+
+      console.log('adding')
+      this.pinnedPanelsRef.current.innerHTML += newPanel.innerHTML
+      // console.log('unpin button')
+      // console.log(unpinButton)
+      // this.pinnedPanelsRef.current.innerHTML += unpinButton
+    }
+  }
+
+  resetPins() {
+
+
+    this.pinnedPanelsRef.current.innerHTML = ''
+
   }
 
   render() {
+
+
+
     return (
       <React.Fragment>
         <div id='container'>
@@ -142,6 +177,7 @@ class GameTracker extends React.Component {
             createCharacterWindow={this.createCharacterWindow}
             createMapWindow={this.createMapWindow}
             createDefaultCharacter={this.createDefaultCharacter}
+            togglePinPanel={this.togglePinPanel}
           />
           <div id='tracker-contents'>
             <div id='windows-container'>
@@ -152,7 +188,19 @@ class GameTracker extends React.Component {
                 {this.state.characterWindowsList}
               </div>
             </div>
-            <div id='pinned-panels-container'>pinned spanels</div>
+
+            <div id='pinned-panels-container' >
+              <button onClick={() => { this.resetPins() }}>Clear pins</button>
+              <h2>Pinned Panels</h2>
+              <div id='pinned-panels' ref={this.pinnedPanelsRef}></div>
+
+              {/* {
+                this.state.pinnedPanels} */}
+
+            </div>
+
+
+
           </div>
         </div>
       </React.Fragment>
