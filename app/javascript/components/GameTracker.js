@@ -15,7 +15,7 @@ class GameTracker extends React.Component {
     };
 
     this.pinnedPanelsRef = React.createRef();
-    this.pinPanel = this.pinPanel.bind(this);
+    this.togglePinPanel = this.togglePinPanel.bind(this);
 
 
     this.minimizeCharacterWindow = this.minimizeCharacterWindow.bind(this);
@@ -130,7 +130,7 @@ class GameTracker extends React.Component {
     }
   }
 
-  pinPanel(panel) {
+  togglePinPanel(panel) {
     console.log(panel)
     console.log('cloning panel...')
 
@@ -161,7 +161,7 @@ class GameTracker extends React.Component {
             createCharacterWindow={this.createCharacterWindow}
             createMapWindow={this.createMapWindow}
             createDefaultCharacter={this.createDefaultCharacter}
-            pinPanel={this.pinPanel}
+            togglePinPanel={this.togglePinPanel}
           />
           <div id='tracker-contents'>
             <div id='windows-container'>

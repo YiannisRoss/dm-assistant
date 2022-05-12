@@ -129,7 +129,7 @@ class EquipmentPanel extends React.Component {
                     isItemSelected: false
                 })
             }}>X</button>
-            <button onClick={() => { this.props.pinPanel(this.itemPanelRef) }}>pin</button>
+            <button onClick={() => { this.props.togglePinPanel(this.itemPanelRef) }}>pin</button>
 
         </div>
 
