@@ -95,7 +95,8 @@ class EquipmentPanel extends React.Component {
             <li>{selectedItemData.name}</li>
             <li>Weight: {selectedItemData.weight} lbs</li>
             <li>{selectedItemData.cost && (selectedItemData.cost.quantity + selectedItemData.cost.unit)}</li>
-            {selectedItemData.desc && <li className='item-description'>{selectedItemData.desc}</li>}
+
+            {selectedItemData.desc && selectedItemData.desc.length > 0 && <li className='item-description'>{selectedItemData.desc}</li>}
 
             {/* armor */}
             {selectedItemData.equipment_category && selectedItemData.equipment_category.name == 'Armor' && ('AC ' + selectedItemData.armor_class.base)}
