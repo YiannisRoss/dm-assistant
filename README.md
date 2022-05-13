@@ -38,7 +38,7 @@ The Game Tracker tool is built in React with the [react-rails](https://github.co
 
 ### Cloning
 
-If you want to clone the project to run it locally, make sure you have the appropriate Ruby and Ruby on Rails versions installed first. The version numbers can be found in the `Gemfile` of the main directory. The database used is postgresql.
+If you want to clone the project to run it locally, make sure you have the appropriate Ruby and Ruby on Rails versions installed first. The version numbers can be found in the `Gemfile` of the main directory. The database used is postgresql for the heroku deployment branch.
 
 
 <a name="errors"/>
