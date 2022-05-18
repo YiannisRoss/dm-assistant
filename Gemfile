@@ -9,6 +9,10 @@ ruby '3.0.2'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
+
+#AWS integration
+gem 'aws-sdk-rails'
+gem 'aws-sdk-s3', '~> 1'
 # Use Puma as the app server
 gem 'puma', '>= 5.6.4'
 # Use SCSS for stylesheets
