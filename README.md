@@ -25,7 +25,7 @@ Dungeons and Dragons SRD data is retrieved through the dnd5eapi
 ## Installation
 
 #### **_No installation is needed to run this for your game._** 
-Click on [this link](https://fierce-wave-86598.herokuapp.com/) to access dm-assistant. The hosting website will save your account details, as well as all characters and maps you create. The database is persistent, meaning it is stored for you to access even after you close the browser or restart your computer.
+Click on [this link](https://fierce-wave-86598.herokuapp.com/) to access dm-assistant. The hosting website will save your account details, as well as all characters and maps you create. ~~The database is persistent, meaning it is stored for you to access even after you close the browser or restart your computer.~~ The database is persistent for a small amount of time on the online hosted version, meaning that your uploaded images will disappear at some point. An online persistence solution with AWS is in the works.
 
 ### Authentication
 
