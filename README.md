@@ -2,16 +2,16 @@
 
 A Ruby on Rails app that assists DMs with character and map tracking. Made with Dungeons and Dragons in mind, but potentially works for other systems as well. Hosted [here on Heroku](https://fierce-wave-86598.herokuapp.com/)
 
-Username/email login
+- Username/email login
 
-Character and map creation, with images
+- Character and map creation, with images
 
-Character backup exporting and importing
+- Character backup exporting and importing
 
-React component GameTracker.js allows for live character creation and editing with the rails API
+- React component GameTracker.js allows for live character creation and editing with the rails API
   - map magnification on doubleclick with https://www.npmjs.com/package/react-image-magnifiers
-
-Dungeons and Dragons SRD data is retrieved through the dnd5eapi
+  
+- Dungeons and Dragons SRD data is retrieved through the dnd5eapi
 
 
 # Contents  
