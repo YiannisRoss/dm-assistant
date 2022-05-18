@@ -34,6 +34,18 @@ class Navbar extends React.Component {
                     <SpellsPanel togglePinPanel={togglePinPanel} />
                     <ConditionsPanel togglePinPanel={togglePinPanel} />
                     <ClassesPanel togglePinPanel={togglePinPanel} />
+                    <button onClick={() => {
+                        console.log('getting aws')
+                        let AWSData = fetch(`https://dm-assistant-bucket-test1.s3.eu-west-3.amazonaws.com/stickcharacter.png`, {
+                            headers: {
+                                // 'Content-Type': 'application/json',
+                                // 'Host': 's3.eu-west-3.amazonaws.com',
+                                // 'cors': 'cors'
+                            }
+                        }).then(response => response.json())
+                        console.log(AWSData)
+
+                    }}>get aws</button>
                 </div>
 
             </React.Fragment>
