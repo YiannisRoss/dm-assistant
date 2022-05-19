@@ -25,7 +25,9 @@ A Ruby on Rails app that assists DMs with character and map tracking. Made with 
 ## Installation
 
 #### **_No installation is needed to run this for your game._** 
-Click on [this link](https://fierce-wave-86598.herokuapp.com/) to access dm-assistant. The hosting website will save your account details, as well as all characters and maps you create. ~~The database is persistent, meaning it is stored for you to access even after you close the browser or restart your computer.~~ The database is persistent for a small amount of time on the online hosted version, meaning that your uploaded images will disappear at some point. An online persistence solution with AWS is in the works.
+Click on [this link](https://fierce-wave-86598.herokuapp.com/) to access dm-assistant. The hosting website will save your account details, as well as all characters and maps you create. The database is persistent, meaning it is stored for you to access even after you close the browser or restart your computer. 
+
+**NOTE: Currently, image saving works only for character images. Map images will be saved on the /maps view, but will not be shown on the Game Tracker.** [Relevant issue.](https://github.com/YiannisRoss/dm-assistant/issues/17) 
 
 ### Authentication
 
