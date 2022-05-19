@@ -34,6 +34,7 @@ class Navbar extends React.Component {
                     <SpellsPanel togglePinPanel={togglePinPanel} />
                     <ConditionsPanel togglePinPanel={togglePinPanel} />
                     <ClassesPanel togglePinPanel={togglePinPanel} />
+
                 </div>
 
             </React.Fragment>

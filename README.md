@@ -2,16 +2,16 @@
 
 A Ruby on Rails app that assists DMs with character and map tracking. Made with Dungeons and Dragons in mind, but potentially works for other systems as well. Hosted [here on Heroku](https://fierce-wave-86598.herokuapp.com/)
 
-Username/email login
+- Username/email login
 
-Character and map creation, with images
+- Character and map creation, with images
 
-Character backup exporting and importing
+- Character backup exporting and importing
 
-React component GameTracker.js allows for live character creation and editing with the rails API
+- React component GameTracker.js allows for live character creation and editing with the rails API
   - map magnification on doubleclick with https://www.npmjs.com/package/react-image-magnifiers
-
-Dungeons and Dragons SRD data is retrieved through the dnd5eapi
+  
+- Dungeons and Dragons SRD data is retrieved through the dnd5eapi
 
 
 # Contents  
@@ -25,7 +25,7 @@ Dungeons and Dragons SRD data is retrieved through the dnd5eapi
 ## Installation
 
 #### **_No installation is needed to run this for your game._** 
-Click on [this link](https://fierce-wave-86598.herokuapp.com/) to access dm-assistant. The hosting website will save your account details, as well as all characters and maps you create. The database is persistent, meaning it is stored for you to access even after you close the browser or restart your computer.
+Click on [this link](https://fierce-wave-86598.herokuapp.com/) to access dm-assistant. The hosting website will save your account details, as well as all characters and maps you create. ~~The database is persistent, meaning it is stored for you to access even after you close the browser or restart your computer.~~ The database is persistent for a small amount of time on the online hosted version, meaning that your uploaded images will disappear at some point. An online persistence solution with AWS is in the works.
 
 ### Authentication
 
@@ -38,7 +38,7 @@ The Game Tracker tool is built in React with the [react-rails](https://github.co
 
 ### Cloning
 
-If you want to clone the project to run it locally, make sure you have the appropriate Ruby and Ruby on Rails versions installed first. The version numbers can be found in the `Gemfile` of the main directory. The database used is postgresql.
+If you want to clone the project to run it locally, make sure you have the appropriate Ruby and Ruby on Rails versions installed first. The version numbers can be found in the `Gemfile` of the main directory. The database used is postgresql for the heroku deployment branch, and sqlite3 for the locally hosted version(main branch).
 
 
 <a name="errors"/>
