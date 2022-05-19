@@ -6,6 +6,27 @@
     width: 100%;
     height: 100vh;
 }
+
+#tracker-contents {
+    display: flex;
+}
+
+#windows-container {
+
+
+}
+
+#pinned-panels-container {
+    background-color: bisque;
+    position: absolute;
+    right: 0px;
+    height: 80vh;
+    width: min-content;
+    color: #000;
+    overflow: scroll;
+}
+
+
 #character-windows-list-container {
 
     display: flex;
@@ -20,3 +41,5 @@
 li {
     list-style-type: none;
 }
+
+

@@ -13,6 +13,8 @@ class EquipmentPanel extends React.Component {
                 results: []
             }
         }
+
+        this.itemPanelRef = React.createRef()
     }
 
     async getData() {
@@ -93,7 +95,8 @@ class EquipmentPanel extends React.Component {
             <li>{selectedItemData.name}</li>
             <li>Weight: {selectedItemData.weight} lbs</li>
             <li>{selectedItemData.cost && (selectedItemData.cost.quantity + selectedItemData.cost.unit)}</li>
-            {selectedItemData.desc && <li className='item-description'>{selectedItemData.desc}</li>}
+
+            {selectedItemData.desc && selectedItemData.desc.length > 0 && <li className='item-description'>{selectedItemData.desc}</li>}
 
             {/* armor */}
             {selectedItemData.equipment_category && selectedItemData.equipment_category.name == 'Armor' && ('AC ' + selectedItemData.armor_class.base)}
@@ -117,16 +120,22 @@ class EquipmentPanel extends React.Component {
 
         </ul>
 
-        let itemPanel = <div className="item-panel">
+        let itemPanel = <div className="item-panel" ref={this.itemPanelRef}>
             {selectedItemData != null && (
                 itemProperties)
             }
+
+
+            <button onClick={() => {
+                this.props.togglePinPanel(this.itemPanelRef)
+            }}>pin</button>
             <button onClick={() => {
                 this.setState({
                     isItemSelected: false
                 })
             }}>X</button>
         </div>
+
 
         return (
             <React.Fragment>
@@ -148,6 +157,7 @@ class EquipmentPanel extends React.Component {
                     }} />
                     Equipment
                     {this.state.isItemSelected && itemPanel}
+
                     {this.state.isExpanded && expandedList}
 
                 </div>

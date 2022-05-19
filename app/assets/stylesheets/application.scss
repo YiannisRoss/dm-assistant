@@ -31,22 +31,8 @@
    color: #fbeff1;
  }
 
- #navbar {
 
-    margin-top: -2vh; //covers small gap left by html element
-    background-color: #1d1d1d;
-    color: #fbeff1;
-    box-sizing: border-box;
 
-    width: 100vw;
-    height: 10vh;
-    top: 0;
-
-    text-align: right;
-
-    a {
-       text-decoration: none;
-       color: #fbeff1;
-    }
- }
-
+#page-contents {
+   margin-top: 10vh;
+}
