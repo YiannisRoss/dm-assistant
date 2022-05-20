@@ -9,6 +9,7 @@ class GameTracker extends React.Component {
     super(props);
     this.state = {
       characters: this.props.characters,
+      maps: this.props.maps,
       characterWindowsList: [],
       mapWindowsList: [],
       pinnedPanels: []
@@ -34,6 +35,18 @@ class GameTracker extends React.Component {
       .then(charactersData => {
         this.setState({
           characters: charactersData
+        })
+      })
+  }
+
+  async getMaps() {
+    fetch(`/api/v1/maps.json`, {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'GET'
+    }).then(response => response.json())
+      .then(mapsData => {
+        this.setState({
+          maps: mapsData
         })
       })
   }
@@ -126,7 +139,7 @@ class GameTracker extends React.Component {
         })
         return
       }
-
+      this.getMaps()
     }
   }
 
@@ -173,7 +186,7 @@ class GameTracker extends React.Component {
       <React.Fragment>
         <div id='container'>
           <Navbar characters={this.state.characters}
-            maps={this.props.maps}
+            maps={this.state.maps}
             createCharacterWindow={this.createCharacterWindow}
             createMapWindow={this.createMapWindow}
             createDefaultCharacter={this.createDefaultCharacter}

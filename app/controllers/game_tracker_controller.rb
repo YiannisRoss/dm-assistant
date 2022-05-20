@@ -20,5 +20,17 @@ class GameTrackerController < ApplicationController
     end
 
     @maps = Map.all.where(user_id: current_user.id)
+    @maps_with_img_URL = []
+    @maps.each do |map|
+      map_data = {
+        id: map.id,
+        title: map.title,
+        user_id: map.user_id,
+        image_url: nil
+      }
+
+      map_data[:image_url] = (url_for(map.image) if map.image.persisted?)
+      @maps_with_img_URL.push(map_data)
+    end
   end
 end
