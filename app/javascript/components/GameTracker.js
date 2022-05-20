@@ -39,6 +39,18 @@ class GameTracker extends React.Component {
       })
   }
 
+  async getMaps() {
+    fetch(`/api/v1/maps.json`, {
+      headers: { 'Content-Type': 'application/json' },
+      method: 'GET'
+    }).then(response => response.json())
+      .then(mapsData => {
+        this.setState({
+          maps: mapsData
+        })
+      })
+  }
+
   async createDefaultCharacter() {
     console.log('creating default char')
     let defaultCharacter = {
@@ -127,7 +139,7 @@ class GameTracker extends React.Component {
         })
         return
       }
-
+      this.getMaps()
     }
   }
 
@@ -174,7 +186,7 @@ class GameTracker extends React.Component {
       <React.Fragment>
         <div id='container'>
           <Navbar characters={this.state.characters}
-            maps={this.props.maps}
+            maps={this.state.maps}
             createCharacterWindow={this.createCharacterWindow}
             createMapWindow={this.createMapWindow}
             createDefaultCharacter={this.createDefaultCharacter}

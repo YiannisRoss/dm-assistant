@@ -17,6 +17,11 @@ Rails.application.routes.draw do
           post 'import'
         end
       end
+      resources :maps do
+        collection do
+          post 'import'
+        end
+      end
     end
   end
 end

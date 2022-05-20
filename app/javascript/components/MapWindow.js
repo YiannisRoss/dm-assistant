@@ -8,7 +8,7 @@ import {
     PictureInPictureMagnifier,
     MOUSE_ACTIVATION,
     TOUCH_ACTIVATION
-  } from "react-image-magnifiers";
+} from "react-image-magnifiers";
 
 class MapWindow extends React.Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class MapWindow extends React.Component {
     }
 
     render() {
-        const { map, mapImageURL } = this.props;
+        const { map } = this.props;
 
 
         return (
@@ -31,14 +31,14 @@ class MapWindow extends React.Component {
                     </div>
 
                     <button onClick={() => { console.log(map) }}>show map details</button>
-                        
+
                     <Magnifier
-                    className="map-img"
-                    imageSrc={mapImageURL}
-                    imageAlt={`${map.title} image`}
-                    // largeImageSrc="./large-image.jpg" // Optional
-                    mouseActivation={MOUSE_ACTIVATION.DOUBLE_CLICK} // Optional
-                    touchActivation={TOUCH_ACTIVATION.DOUBLE_TAP} // Optional
+                        className="map-img"
+                        imageSrc={map.image_url}
+                        imageAlt={`${map.title} image`}
+                        // largeImageSrc="./large-image.jpg" // Optional
+                        mouseActivation={MOUSE_ACTIVATION.DOUBLE_CLICK} // Optional
+                        touchActivation={TOUCH_ACTIVATION.DOUBLE_TAP} // Optional
                     />
                     <button className="hide-button" onClick={() => {
                         this.props.minimizeMapWindow(map)
