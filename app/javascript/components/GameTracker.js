@@ -9,6 +9,7 @@ class GameTracker extends React.Component {
     super(props);
     this.state = {
       characters: this.props.characters,
+      maps: this.props.maps,
       characterWindowsList: [],
       mapWindowsList: [],
       pinnedPanels: []
