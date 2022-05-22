@@ -66,9 +66,22 @@
 }
 
 option:hover {
-    background-color: rgb(121, 121, 121); ;
+    background-color: rgb(121, 121, 121);
 }
 
 li:hover {
-    background-color: rgb(121, 121, 121); ;
+    background-color: rgb(121, 121, 121);
+}
+
+#navbar-home-button {
+    background-color: gray;
+    box-shadow: 5px 5px rgb(78, 78, 78);
+    border: 1px solid blueviolet;
+    height: 50%;
+
+    
+}
+
+#navbar-home-button:hover {
+    background-color: rgb(68, 68, 68);
 }

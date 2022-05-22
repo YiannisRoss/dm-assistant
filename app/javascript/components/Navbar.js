@@ -34,7 +34,12 @@ class Navbar extends React.Component {
                     <SpellsPanel togglePinPanel={togglePinPanel} />
                     <ConditionsPanel togglePinPanel={togglePinPanel} />
                     <ClassesPanel togglePinPanel={togglePinPanel} />
-                    <button onClick={() => { window.open("/", "_self") }}>Home</button>
+                    <div id="navbar-home-button" onClick={() => {
+                        if (confirm("Are you sure?")) {
+                            window.open("/", "_self")
+                        }
+
+                    }}>Home</div>
                 </div>
 
             </React.Fragment>
