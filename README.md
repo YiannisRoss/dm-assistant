@@ -5,6 +5,7 @@ A Ruby on Rails app that assists DMs with character and map tracking. Made with 
 - Username/email login
 
 - Character and map creation, with images
+   - maps and characters are stored in an Amazon S3 bucket
 
 - Character backup exporting and importing
 
