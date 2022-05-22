@@ -27,13 +27,19 @@ class Navbar extends React.Component {
                         dropdownOptions={this.props.maps}
                         arrayName={'Maps'}
                         createWindow={createMapWindow}
-                        createDefaultOption={() => { window.open("/maps/new", "_blank") }}
+                        createDefaultOption={() => { window.open("/maps/new") }}
                     />
                     <EquipmentPanel
                         togglePinPanel={togglePinPanel} />
                     <SpellsPanel togglePinPanel={togglePinPanel} />
                     <ConditionsPanel togglePinPanel={togglePinPanel} />
                     <ClassesPanel togglePinPanel={togglePinPanel} />
+                    <div id="navbar-home-button" onClick={() => {
+                        if (confirm("Are you sure?")) {
+                            window.open("/", "_self")
+                        }
+
+                    }}>Home</div>
                 </div>
 
             </React.Fragment>
