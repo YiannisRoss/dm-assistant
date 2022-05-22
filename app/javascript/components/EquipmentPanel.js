@@ -150,11 +150,7 @@ class EquipmentPanel extends React.Component {
                         isExpanded: false
                     });
                 }}>
-                    <button onClick={() => {
 
-                        console.log(this.state.selectedItemData)
-
-                    }} />
                     Equipment
                     {this.state.isItemSelected && itemPanel}
 

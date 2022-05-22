@@ -207,8 +207,6 @@ class GameTracker extends React.Component {
               <h2>Pinned Panels</h2>
               <div id='pinned-panels' ref={this.pinnedPanelsRef}></div>
 
-              {/* {
-                this.state.pinnedPanels} */}
 
             </div>
 

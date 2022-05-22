@@ -103,11 +103,7 @@ class ConditionsPanel extends React.Component {
                         isExpanded: false
                     });
                 }}>
-                    <button onClick={() => {
 
-                        console.log(this.state.selectedItemData)
-
-                    }} />
                     Conditions
                     {this.state.isItemSelected && itemPanel}
                     {this.state.isExpanded && expandedList}

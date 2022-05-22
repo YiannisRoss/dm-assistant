@@ -157,12 +157,7 @@ class ClassesPanel extends React.Component {
                         isExpanded: false
                     });
                 }}>
-                    <button onClick={() => {
-                        console.log(this.state.characterClasses)
-                        console.log(this.state.selectedItemData)
-                        console.log(this.state.selectedClassFeatures)
-                        console.log(this.state.selectedFeature)
-                    }} />
+
                     Classes
                     {this.state.isFeatureSelected && featurePanel}
                     {this.state.isItemSelected && itemPanel}
