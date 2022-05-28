@@ -48,13 +48,11 @@ class CharactersController < ApplicationController
     respond_to do |format|
       if @character.update(character_params)
         format.html { redirect_to characters_path, notice: 'character was successfully saved.' }
-        # format.json { render :show, status: :updated, location: @character }
       else
         format.html do
           redirect_to characters_path, alert: "character failed, #{@character.errors.full_messages.first}",
                                        status: :unprocessable_entity
         end
-        # format.json { render json: @character.errors, status: :unprocessable_entity }
       end
     end
   end
