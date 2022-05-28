@@ -87,7 +87,7 @@ class CharacterWindow extends React.Component {
         const characterDescriptionDiv = <div>
             <h3>Description</h3>
             <p id="character-description" className="character-attributes" onDoubleClick={() => {
-                console.log(character.name + ' description doubleclicked')
+
                 this.toggleDescriptionEditable()
             }}>{character.description}</p>
         </div>
@@ -120,7 +120,7 @@ class CharacterWindow extends React.Component {
                     </div>
                     <button className="hide-button" onClick={() => {
                         this.props.minimizeCharacterWindow(this.props.character)
-                        console.log(character)
+
                     }}>Hide</button>
                     {!isStatsUnderEdit && characterStatsDiv}
                     {isStatsUnderEdit && characterStatsInput}

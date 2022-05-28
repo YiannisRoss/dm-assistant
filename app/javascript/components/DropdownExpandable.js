@@ -27,13 +27,11 @@ class DropdownExpandable extends React.Component {
         return (
             <React.Fragment>
                 <div className="dropdown" onMouseEnter={() => {
-                    console.log('dropdown expandable mouseenter.')
                     this.setState({
                         isExpanded: true
                     });
                 }
                 } onMouseLeave={() => {
-                    console.log('mouse left')
                     this.setState({
                         isExpanded: false
                     });

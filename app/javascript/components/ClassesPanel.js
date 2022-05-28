@@ -18,7 +18,7 @@ class ClassesPanel extends React.Component {
     }
 
     async getData() {
-        console.log(`fetching classes data from https://www.dnd5eapi.co/api/classes`)
+
         let APIData = fetch(`https://www.dnd5eapi.co/api/classes`, {
             headers: {
                 'Content-Type': 'application/json',
@@ -59,7 +59,6 @@ class ClassesPanel extends React.Component {
     }
 
     async getFeatureData(url) {
-        console.log('getting feature data from:' + `https://www.dnd5eapi.co${url}`)
         let APIData = fetch(`https://www.dnd5eapi.co${url}`, {
             headers: {
                 'Content-Type': 'application/json',

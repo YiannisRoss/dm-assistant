@@ -52,7 +52,6 @@ class GameTracker extends React.Component {
   }
 
   async createDefaultCharacter() {
-    console.log('creating default char')
     let defaultCharacter = {
       name: 'default char name',
       user_id: this.props.current_user.id,
@@ -76,7 +75,7 @@ class GameTracker extends React.Component {
 
   createCharacterWindow(character) {
     if (character.isActivated) {
-      console.log(`${character.name} has already been selected`)
+      alert(`${character.name} has already been selected`)
       return
     }
     character.isActivated = true

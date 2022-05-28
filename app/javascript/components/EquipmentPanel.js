@@ -18,7 +18,6 @@ class EquipmentPanel extends React.Component {
     }
 
     async getData() {
-        console.log(`fetching equipment data from https://www.dnd5eapi.co/api/equipment`)
         let APIData = fetch(`https://www.dnd5eapi.co/api/equipment`, {
             headers: {
                 'Content-Type': 'application/json',

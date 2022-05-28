@@ -16,7 +16,6 @@ class ConditionsPanel extends React.Component {
     }
 
     async getData() {
-        console.log(`fetching conditions data from https://www.dnd5eapi.co/api/conditions`)
         let APIData = fetch(`https://www.dnd5eapi.co/api/conditions`, {
             headers: {
                 'Content-Type': 'application/json',
