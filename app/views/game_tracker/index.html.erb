@@ -1,12 +1,3 @@
 
 
- <% mapImageURLs = [] %>
- <% i = 0 %>
-
-  <% @maps.each do |map| %>
-
-      <%mapImageURLs[i] = url_for(map.image) if map.image.persisted?%>
-      <%i = i+1%>
- <%end%>  
-
 <%= react_component("GameTracker", { current_user: current_user, characters: @characters_with_img_URL, maps: @maps_with_img_URL }) %>
