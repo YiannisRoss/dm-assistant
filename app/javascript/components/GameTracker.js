@@ -24,9 +24,13 @@ class GameTracker extends React.Component {
     this.createDefaultCharacter = this.createDefaultCharacter.bind(this);
     this.createCharacterWindow = this.createCharacterWindow.bind(this);
     this.createMapWindow = this.createMapWindow.bind(this);
-    this.state.characters.map((character) => character.isActivated = false)
-    this.props.maps.map((map) => map.isActivated = false)
+
+    if (this.props.current_user) {
+      this.state.characters.map((character) => character.isActivated = false)
+      this.props.maps.map((map) => map.isActivated = false)
+    }
   }
+
   async getCharacters() {
     fetch(`/api/v1/characters.json`, {
       headers: { 'Content-Type': 'application/json' },
