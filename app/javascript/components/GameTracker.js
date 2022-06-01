@@ -98,7 +98,6 @@ class GameTracker extends React.Component {
 
     let newMapWindow = <MapWindow
       key={map.id} map={map}
-      mapImageURL={this.props.mapImageURLs[map.id - 1]}
       minimizeMapWindow={this.minimizeMapWindow} />;
 
     this.setState({
