@@ -184,7 +184,9 @@ class GameTracker extends React.Component {
     return (
       <React.Fragment>
         <div id='container'>
-          <Navbar characters={this.state.characters}
+          <Navbar
+            current_user={this.props.current_user}
+            characters={this.state.characters}
             maps={this.state.maps}
             createCharacterWindow={this.createCharacterWindow}
             createMapWindow={this.createMapWindow}
