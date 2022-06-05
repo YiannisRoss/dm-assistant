@@ -24,9 +24,13 @@ class GameTracker extends React.Component {
     this.createDefaultCharacter = this.createDefaultCharacter.bind(this);
     this.createCharacterWindow = this.createCharacterWindow.bind(this);
     this.createMapWindow = this.createMapWindow.bind(this);
-    this.state.characters.map((character) => character.isActivated = false)
-    this.props.maps.map((map) => map.isActivated = false)
+
+    if (this.props.current_user) {
+      this.state.characters.map((character) => character.isActivated = false)
+      this.props.maps.map((map) => map.isActivated = false)
+    }
   }
+
   async getCharacters() {
     fetch(`/api/v1/characters.json`, {
       headers: { 'Content-Type': 'application/json' },
@@ -98,7 +102,6 @@ class GameTracker extends React.Component {
 
     let newMapWindow = <MapWindow
       key={map.id} map={map}
-      mapImageURL={this.props.mapImageURLs[map.id - 1]}
       minimizeMapWindow={this.minimizeMapWindow} />;
 
     this.setState({
@@ -184,7 +187,9 @@ class GameTracker extends React.Component {
     return (
       <React.Fragment>
         <div id='container'>
-          <Navbar characters={this.state.characters}
+          <Navbar
+            current_user={this.props.current_user}
+            characters={this.state.characters}
             maps={this.state.maps}
             createCharacterWindow={this.createCharacterWindow}
             createMapWindow={this.createMapWindow}
