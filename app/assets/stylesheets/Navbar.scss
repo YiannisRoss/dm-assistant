@@ -57,6 +57,7 @@
 
 .expanded-panel{
     overflow: scroll;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     max-height: 80vh;
     
