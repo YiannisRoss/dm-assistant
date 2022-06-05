@@ -13,7 +13,6 @@ class Navbar extends React.Component {
 
     render() {
         const { createMapWindow, createCharacterWindow, createDefaultCharacter, togglePinPanel } = this.props;
-
         let charactersPanel = <DropdownExpandable
             dropdownOptions={this.props.characters}
             arrayName={'Characters'}
