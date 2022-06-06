@@ -11,7 +11,8 @@ class SpellsPanel extends React.Component {
             selectedItemData: {},
             panelInfo: {
                 results: []
-            }
+            },
+            lastSearch: ""
         }
 
         this.itemPanelRef = React.createRef()
@@ -56,6 +57,7 @@ class SpellsPanel extends React.Component {
     }
 
     searchDropdown() {
+
         let input = document.getElementById("search-input");
 
         if (input) {
@@ -70,7 +72,12 @@ class SpellsPanel extends React.Component {
                     li[i].style.display = "none";
                 }
             }
+
+            this.setState({
+                lastSearch: input.value
+            })
         }
+
     }
 
     componentDidMount() {
@@ -80,14 +87,14 @@ class SpellsPanel extends React.Component {
     }
 
     render() {
-        const { selectedItemData } = this.state;
+        const { selectedItemData, lastSearch } = this.state;
         let listItems = this.state.panelInfo.results.map((item, index) =>
             <li key={index} className="item-list-element" onClick={() => {
                 this.showItemInfo(item)
 
             }}>{item.name}</li>);
-        let expandedList = <div className="dropdown-popup expanded-panel">
-            <input type="text" id='search-input' placeholder="Search..." onChange={() => { this.searchDropdown() }}></input>
+        let expandedList = <div className="dropdown-popup expanded-panel" onMouseEnter={() => { this.searchDropdown() }}>
+            <input type="text" id='search-input' placeholder="Search..." value={lastSearch} onChange={() => { this.searchDropdown() }}></input>
             {listItems}
 
         </div >
@@ -137,11 +144,7 @@ class SpellsPanel extends React.Component {
                         isExpanded: false
                     });
                 }}>
-                    <button onClick={() => {
 
-                        console.log(this.state.selectedItemData)
-
-                    }} />
                     Spells
                     {this.state.isItemSelected && itemPanel}
                     {this.state.isExpanded && expandedList}

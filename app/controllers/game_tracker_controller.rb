@@ -3,6 +3,9 @@
 class GameTrackerController < ApplicationController
   layout 'game_tracker'
   def index
+    unless current_user
+      return
+    end
     @characters = Character.all.where(user_id: current_user.id)
     @characters_with_img_URL = []
     @characters.each do |character|

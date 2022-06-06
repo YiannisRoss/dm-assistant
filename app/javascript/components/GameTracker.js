@@ -24,9 +24,13 @@ class GameTracker extends React.Component {
     this.createDefaultCharacter = this.createDefaultCharacter.bind(this);
     this.createCharacterWindow = this.createCharacterWindow.bind(this);
     this.createMapWindow = this.createMapWindow.bind(this);
-    this.state.characters.map((character) => character.isActivated = false)
-    this.props.maps.map((map) => map.isActivated = false)
+
+    if (this.props.current_user) {
+      this.state.characters.map((character) => character.isActivated = false)
+      this.props.maps.map((map) => map.isActivated = false)
+    }
   }
+
   async getCharacters() {
     fetch(`/api/v1/characters.json`, {
       headers: { 'Content-Type': 'application/json' },
@@ -52,7 +56,6 @@ class GameTracker extends React.Component {
   }
 
   async createDefaultCharacter() {
-    console.log('creating default char')
     let defaultCharacter = {
       name: 'default char name',
       user_id: this.props.current_user.id,
@@ -76,7 +79,7 @@ class GameTracker extends React.Component {
 
   createCharacterWindow(character) {
     if (character.isActivated) {
-      console.log(`${character.name} has already been selected`)
+      alert(`${character.name} has already been selected`)
       return
     }
     character.isActivated = true
@@ -99,7 +102,6 @@ class GameTracker extends React.Component {
 
     let newMapWindow = <MapWindow
       key={map.id} map={map}
-      mapImageURL={this.props.mapImageURLs[map.id - 1]}
       minimizeMapWindow={this.minimizeMapWindow} />;
 
     this.setState({
@@ -186,7 +188,10 @@ class GameTracker extends React.Component {
       <React.Fragment>
         <div id='container'>
 
-          <Navbar characters={this.state.characters}
+          <Navbar
+            current_user={this.props.current_user}
+            characters={this.state.characters}
+
             maps={this.state.maps}
             createCharacterWindow={this.createCharacterWindow}
             createMapWindow={this.createMapWindow}
@@ -208,8 +213,6 @@ class GameTracker extends React.Component {
               <h2>Pinned Panels</h2>
               <div id='pinned-panels' ref={this.pinnedPanelsRef}></div>
 
-              {/* {
-                this.state.pinnedPanels} */}
 
             </div>
 

@@ -1,5 +1,6 @@
 #navbar {
-
+    //rails layout navbar
+    padding: 1%;
     margin-top: -2vh; //covers small gap left by html element
     background-color: #1d1d1d;
     color: #fbeff1;
@@ -43,6 +44,7 @@
     box-shadow: 5px 5px rgb(78, 78, 78);
     border: 1px solid blueviolet;
     height: 50%;
+    width: 14%;
 }
 
 .dropdown-popup{
@@ -55,6 +57,7 @@
 
 .expanded-panel{
     overflow: scroll;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     max-height: 80vh;
     
@@ -66,9 +69,22 @@
 }
 
 option:hover {
-    background-color: rgb(121, 121, 121); ;
+    background-color: rgb(121, 121, 121);
 }
 
 li:hover {
-    background-color: rgb(121, 121, 121); ;
+    background-color: rgb(121, 121, 121);
+}
+
+#navbar-home-button {
+    background-color: gray;
+    box-shadow: 5px 5px rgb(78, 78, 78);
+    border: 1px solid blueviolet;
+    height: 50%;
+
+    
+}
+
+#navbar-home-button:hover {
+    background-color: rgb(68, 68, 68);
 }

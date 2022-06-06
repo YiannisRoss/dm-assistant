@@ -13,27 +13,36 @@ class Navbar extends React.Component {
 
     render() {
         const { createMapWindow, createCharacterWindow, createDefaultCharacter, togglePinPanel } = this.props;
-
+        let charactersPanel = <DropdownExpandable
+            dropdownOptions={this.props.characters}
+            arrayName={'Characters'}
+            createWindow={createCharacterWindow}
+            createDefaultOption={createDefaultCharacter}
+        />
+        let mapsPanel = <DropdownExpandable
+            dropdownOptions={this.props.maps}
+            arrayName={'Maps'}
+            createWindow={createMapWindow}
+            createDefaultOption={() => { window.open("/maps/new") }}
+        />
         return (
             <React.Fragment>
                 <div id='navbar-container'>
-                    <DropdownExpandable
-                        dropdownOptions={this.props.characters}
-                        arrayName={'Characters'}
-                        createWindow={createCharacterWindow}
-                        createDefaultOption={createDefaultCharacter}
-                    />
-                    <DropdownExpandable
-                        dropdownOptions={this.props.maps}
-                        arrayName={'Maps'}
-                        createWindow={createMapWindow}
-                        createDefaultOption={() => { window.open("/maps/new", "_blank") }}
-                    />
+                    {this.props.current_user && charactersPanel}
+                    {this.props.current_user && mapsPanel}
+
                     <EquipmentPanel
                         togglePinPanel={togglePinPanel} />
                     <SpellsPanel togglePinPanel={togglePinPanel} />
                     <ConditionsPanel togglePinPanel={togglePinPanel} />
                     <ClassesPanel togglePinPanel={togglePinPanel} />
+
+                    <div id="navbar-home-button" onClick={() => {
+                        if (confirm("Are you sure?")) {
+                            window.open("/", "_self")
+                        }
+
+                    }}>Home</div>
 
                 </div>
 
